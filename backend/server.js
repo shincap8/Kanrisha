@@ -1,0 +1,45 @@
+const express = require('express');
+const path = require('path');
+const exphbs = require('express-handlebars');
+const passport = require('passport');
+const session = require('express-session');
+
+// initializations
+const app = express();
+require('./config/passport');
+
+// settings
+app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, '/views'));
+app.engine('.hbs', exphbs({
+  deafultlayout: 'main',
+  layoutsDir: path.join(app.get('views'), 'layouts'),
+  partialsDir: path.join(app.get('views'), 'partials'),
+  extname: 'hbs'
+}));
+app.set('view engine', '.hbs');
+
+// middlewares
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json({ extenden: false }));
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// routes
+app.use(require('./routes/project'));
+app.use(require('./routes/manager'));
+app.use(require('./routes/task'));
+app.use(require('./routes/freelancer'));
+
+// global variables
+
+// static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+module.exports = app;
