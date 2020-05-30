@@ -6,11 +6,13 @@ router.post('/signUp/manager', async (req, res) => {
   const {
     name,
     email,
+    projectsId,
     password
   } = req.body;
   const newManager = new Manager({
     name,
     email,
+    projectsId,
     password
   });
   newManager.password = await newManager.encryptpassword(password);

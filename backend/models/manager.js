@@ -12,7 +12,7 @@ const managerSchema = new Schema({
     unique: true
   },
   projectsId: {
-    type: String,
+    type: Array,
     required: false
   },
   password: {

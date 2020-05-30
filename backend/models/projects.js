@@ -18,11 +18,11 @@ const projectSchema = new Schema({
     required: true
   },
   tasksId: {
-    type: String,
+    type: Array,
     required: false
   },
   freelancersId: {
-    type: String,
+    type: Array,
     required: false
   },
   status: {
