@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Manager = require('../models/manager');
+const Project = require('../models/projects');
 
 router.post('/signUp/manager', async (req, res) => {
   const {
@@ -36,5 +37,16 @@ router.post('/signIn/manager', async (req, res) => {
   }
 }
 );
+
+router.get('/projects-all', async (req, res) => {
+  const store = [];
+  const { managerId } = req.body;
+  const manager = await Manager.findById(managerId);
+  const projectsId = manager.projectsId;
+  for (let i = 1; i < projectsId.length; i++) {
+    store.push(await Project.findById(projectsId[i]));
+  }
+  res.send(store);
+});
 
 module.exports = router;

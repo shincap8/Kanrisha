@@ -10,15 +10,15 @@ const taskSchema = new Schema({
     required: true
   },
   projectId: {
-    type: String,
+    type: Array,
     required: true
   },
   freelancersId: {
-    type: String,
+    type: Array,
     required: false
   },
   commentsId: {
-    type: String,
+    type: Array,
     required: false
   }
 }, {

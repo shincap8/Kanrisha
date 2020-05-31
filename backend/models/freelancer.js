@@ -11,19 +11,19 @@ const freelancerSchema = new Schema({
     required: true
   },
   projectsId: {
-    type: String,
+    type: [],
     required: false
   },
   password: {
     type: String,
     required: true
   },
-  taskId: {
-    type: String,
+  tasksId: {
+    type: [],
     required: false
   },
   commentsId: {
-    type: String,
+    type: [],
     required: false
   }
 }, {
