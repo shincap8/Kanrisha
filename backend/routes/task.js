@@ -20,21 +20,24 @@ router.post('/new-task', async (req, res) => {
     commentsId
   });
   await newTask.save();
-  console.log(newTask);
   const project = await Project.findById(projectId);
-  project.tasksId.push(newTask._id);
-  // project.save();
-  if (freelancersId) {
-    const castfreelancerId = Object.values(freelancersId);
-    for (let i = 0; i < castfreelancerId.length; i++) {
+  if (project) {
+    const store = [];
+    project.tasksId = newTask._id;
+    for (let i = 0; i < freelancersId.length; i++) {
+      project.freelancersId.push(freelancersId[i]);
       const freelancer = await Freelancer.findById(freelancersId[i]);
-      freelancer.tasksId.push(newTask._id);
-      freelancer.save();
-      project.freelancersId.push(castfreelancerId[i]);
+      store.push(freelancer);
     }
     project.save();
+    console.log(store);
+    for (let j = 0; j < store.length; j++) {
+      store[j].tasksId.push(newTask._id);
+      store[j].projectsId.push(projectId);
+      store[j].save();
+    }
   }
-  res.send('true');
+  res.send(true);
 });
 
 module.exports = router;
