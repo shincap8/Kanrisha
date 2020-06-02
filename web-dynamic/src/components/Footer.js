@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../img/Logo.png';
 import history from '../history';
 
-export class NavBar extends React.Component {
+export class Footer extends React.Component {
   constructor (props){
     super(props);
 
