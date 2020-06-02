@@ -2,15 +2,15 @@ const express = require('express');
 const router = express.Router();
 const Task = require('../models/task');
 const Project = require('../models/projects');
-const Freelancer = require('../models/freelancer');
+// const Freelancer = require('../models/freelancer');
 
 router.post('/new-task', async (req, res) => {
   const {
     name,
     description,
     projectId,
-    freelancersId,
     commentsId,
+    freelancer,
     weight,
     tasktype
   } = req.body;
@@ -18,28 +18,19 @@ router.post('/new-task', async (req, res) => {
     name,
     description,
     projectId,
-    freelancersId,
     commentsId,
+    freelancer,
     weight,
     tasktype
   });
   await newTask.save();
+  console.log(newTask);
   const project = await Project.findById(projectId);
   if (project) {
-    const store = [];
     project.tasksId = newTask._id;
-    for (let i = 0; i < freelancersId.length; i++) {
-      project.freelancersId.push(freelancersId[i]);
-      const freelancer = await Freelancer.findById(freelancersId[i]);
-      store.push(freelancer);
-    }
     project.save();
-    console.log(store);
-    for (let j = 0; j < store.length; j++) {
-      store[j].tasksId.push([newTask._id, 0]);
-      store[j].projectsId.push(projectId);
-      store[j].save();
-    }
+  } else {
+    res.send(false);
   }
   res.send(true);
 });
