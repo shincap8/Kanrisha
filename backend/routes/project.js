@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Project = require('../models/projects');
 const Manager = require('../models/manager');
+const aux = require('../helpers/aux');
 
 router.post('/new-project', async (req, res) => {
   const {
@@ -11,7 +12,8 @@ router.post('/new-project', async (req, res) => {
     status,
     deadline,
     freelancersId,
-    tasksId
+    tasksId,
+    advanced
   } = req.body;
   const newProject = new Project({
     managerId,
@@ -20,7 +22,8 @@ router.post('/new-project', async (req, res) => {
     status,
     deadline,
     freelancersId,
-    tasksId
+    tasksId,
+    advanced
   });
   await newProject.save();
   const manager = await Manager.findById(managerId);
@@ -29,9 +32,19 @@ router.post('/new-project', async (req, res) => {
   res.send('true');
 });
 
-router.get('/projects/:id', async (req, res) => {
-  const projects = await Project.find({ managerId: req.params.id });
-  res.send(projects);
+router.get('/project-advanced', async (req, res) => {
+  const { projectId } = req.body;
+  const project = await Project.findById(projectId);
+  if (project) {
+    const tasks = project.tasksId;
+    if (tasks) {
+      console.log(typeof (tasks));
+      aux.calculateAdvance(tasks);
+      res.send('ok');
+    } else {
+      res.send('ok');
+    }
+  }
 });
 
 module.exports = router;

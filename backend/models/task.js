@@ -15,11 +15,19 @@ const taskSchema = new Schema({
   },
   freelancersId: {
     type: Array,
-    required: false
+    required: true
   },
   commentsId: {
     type: Array,
-    required: false
+    required: true
+  },
+  weight: {
+    type: Number,
+    required: true
+  },
+  tasktype: {
+    type: Number,
+    required: true
   }
 }, {
   timestamps: true

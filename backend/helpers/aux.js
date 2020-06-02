@@ -1,7 +1,8 @@
-function splitproject (project) {
-  const store = [];
-  store.push(project.name);
-  return (store);
-}
+const Freelancer = require('../models/freelancer');
 
-exports.splitproject = splitproject;
+module.exports.calculateAdvance = async function (tasksId) {
+  console.log(typeof (tasksId));
+  const frelancer = await Freelancer.findOne(tasksId);
+  console.log(frelancer);
+  return (0);
+};

@@ -38,15 +38,9 @@ router.post('/signIn/manager', async (req, res) => {
 }
 );
 
-router.get('/projects-all', async (req, res) => {
-  const store = [];
-  const { managerId } = req.body;
-  const manager = await Manager.findById(managerId);
-  const projectsId = manager.projectsId;
-  for (let i = 1; i < projectsId.length; i++) {
-    store.push(await Project.findById(projectsId[i]));
-  }
-  res.send(store);
+router.get('/projects/:id', async (req, res) => {
+  const projects = await Project.find({ managerId: req.params.id });
+  res.send(projects);
 });
 
 module.exports = router;

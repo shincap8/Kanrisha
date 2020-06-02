@@ -28,6 +28,10 @@ const projectSchema = new Schema({
   status: {
     type: Boolean,
     required: true
+  },
+  advanced: {
+    type: Number,
+    required: true
   }
 }, {
   timestamps: true

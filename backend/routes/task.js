@@ -10,14 +10,18 @@ router.post('/new-task', async (req, res) => {
     description,
     projectId,
     freelancersId,
-    commentsId
+    commentsId,
+    weight,
+    tasktype
   } = req.body;
   const newTask = new Task({
     name,
     description,
     projectId,
     freelancersId,
-    commentsId
+    commentsId,
+    weight,
+    tasktype
   });
   await newTask.save();
   const project = await Project.findById(projectId);
@@ -32,7 +36,7 @@ router.post('/new-task', async (req, res) => {
     project.save();
     console.log(store);
     for (let j = 0; j < store.length; j++) {
-      store[j].tasksId.push(newTask._id);
+      store[j].tasksId.push([newTask._id, 0]);
       store[j].projectsId.push(projectId);
       store[j].save();
     }
