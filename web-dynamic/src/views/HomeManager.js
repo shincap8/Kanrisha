@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import history from '../history';
+import ProjectsList from '../components/ProjectsList';
 
 export class HomeManager extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ export class HomeManager extends React.Component {
     axios.get(
       url
       ).then(response => {
-        console.log(response.data);
+        this.setState({ data: response.data })
       }).catch(error => {
         console.log(error.data);
         console.log("registration error", error);
@@ -29,7 +30,10 @@ export class HomeManager extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Home Manager</h1>
+        <div className="container">
+          <h1>Home Manager</h1>
+          <ProjectsList projects={this.state.data} />
+        </div>
       </React.Fragment>
     );
   }

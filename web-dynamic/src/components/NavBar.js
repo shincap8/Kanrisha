@@ -37,7 +37,7 @@ export class NavBar extends React.Component {
             <Link to="/">
               <li className="nav-item nav-link" value={firstBt}>{firstBt}</li>
             </Link>
-            <Link to="/">
+            <Link to="/new-project">
               <li className="nav-item nav-link" value={secondBt}>{secondBt}</li>
             </Link>
             <Link to="/">
