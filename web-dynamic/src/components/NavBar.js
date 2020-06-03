@@ -14,19 +14,12 @@ export class NavBar extends React.Component {
     e.preventDefault();
 
     if (e.target.value === "Logout") {
+      console.log("Eliminé manager Id")
       history.location.state.managerId = "";
     }
   }
 
   render() {
-    let firstBt = "Projects";
-    let secondBt = "New Project";
-
-    if (this.props.location === '/AllProjects') {
-      firstBt = "Active Projects";
-    } else if (this.props.location === '/NewProject') {
-      secondBt = "Active projects";
-    }
     return (
       <nav className="navbar navbar-light bg-light">
           <Link to="/">
@@ -34,11 +27,14 @@ export class NavBar extends React.Component {
           </Link>
           <h3 className="text-left">Personnel Manager</h3>
           <ul className="nav justify-content-end">
-            <Link to="/">
-              <li className="nav-item nav-link" value={firstBt}>{firstBt}</li>
+            <Link to="/HomeManager">
+              <li className="nav-item nav-link" value="Projects" data-toggle="dropdown">Active Projects</li>
             </Link>
-            <Link to="/new-project">
-              <li className="nav-item nav-link" value={secondBt}>{secondBt}</li>
+            <Link to="/">
+              <li className="nav-item nav-link" value="Projects" data-toggle="dropdown">All Projects</li>
+            </Link>
+            <Link to="/NewProject">
+              <li className="nav-item nav-link" value="New_Project">New Project</li>
             </Link>
             <Link to="/">
               <li className="nav-item nav-link" value="Logout">Logout</li>

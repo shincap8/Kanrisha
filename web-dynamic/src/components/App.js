@@ -4,7 +4,7 @@ import history from '../history';
 import { Login } from '../views/Login';
 import { HomeManager } from '../views/HomeManager';
 import { Layout } from './Layout';
-import { ProjectForm } from './ProjectForm';
+import { NewProject } from '../views/NewProject';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Route exact path="/" component={Login} />
         <Layout>
           <Route exact path="/HomeManager" component={HomeManager} />
-          <Route exact path="/new-project" component={ProjectForm} />
+          <Route exact path="/NewProject" component={NewProject} />
         </Layout>
       </Switch>
     </Router>

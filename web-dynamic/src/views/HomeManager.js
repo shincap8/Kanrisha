@@ -11,18 +11,15 @@ export class HomeManager extends React.Component {
       data: [],
       managerId: history.location.state.managerId,
     };
-    console.log(this.state.managerId);
   }
 
   componentDidMount () {
     const url = 'http://localhost:3002/projects/' + this.state.managerId;
-    console.log(url);
     axios.get(
       url
       ).then(response => {
         this.setState({ data: response.data })
       }).catch(error => {
-        console.log(error.data);
         console.log("registration error", error);
       });
   }
@@ -31,7 +28,6 @@ export class HomeManager extends React.Component {
     return (
       <React.Fragment>
         <div className="container">
-          <h1>Home Manager</h1>
           <ProjectsList projects={this.state.data} />
         </div>
       </React.Fragment>
