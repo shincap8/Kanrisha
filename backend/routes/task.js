@@ -35,7 +35,7 @@ router.post('/new-task', async (req, res) => {
   } else {
     res.send(false);
   }
-  res.send(true);
+  res.send(newTask._id);
 });
 
 router.post('/tasks/addfreelancers', async (req, res) => {
@@ -45,6 +45,7 @@ router.post('/tasks/addfreelancers', async (req, res) => {
     projectid
   } = req.body;
   const project = await Project.findById(projectid);
+  const task = await Task.findById(taskId);
   for (let i = 0; i < freelancerids.length; i++) {
     const freelancer = await Freelancer.findById(freelancerids[i]);
     freelancer.tasksId.push(taskId);
@@ -60,8 +61,10 @@ router.post('/tasks/addfreelancers', async (req, res) => {
     freelancer.advancedIds.push(advance._id);
     freelancer.projectsId.push(project._id);
     project.advancedIds.push(advance._id);
+    task.freelancersId.push(freelancerids[i]);
     await freelancer.save();
     await project.save();
+    await task.save();
   }
   res.send(true);
 });

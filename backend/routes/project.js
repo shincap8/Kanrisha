@@ -28,7 +28,7 @@ router.post('/new-project', async (req, res) => {
   const manager = await Manager.findById(managerId);
   manager.projectsId.push(newProject._id);
   manager.save();
-  res.send('true');
+  res.send(newProject._id);
 });
 
 module.exports = router;
