@@ -32,6 +32,10 @@ const projectSchema = new Schema({
   advanced: {
     type: Number,
     required: true
+  },
+  advancedIds: {
+    type: Array,
+    required: true
   }
 }, {
   timestamps: true

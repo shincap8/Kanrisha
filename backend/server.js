@@ -43,6 +43,7 @@ app.use(require('./routes/project'));
 app.use(require('./routes/manager'));
 app.use(require('./routes/task'));
 app.use(require('./routes/freelancer'));
+app.use(require('./routes/advances'));
 
 // global variables
 

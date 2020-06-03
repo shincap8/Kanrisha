@@ -11,20 +11,24 @@ const freelancerSchema = new Schema({
     required: true
   },
   projectsId: {
-    type: [],
-    required: false
+    type: Array,
+    required: true
   },
   password: {
     type: String,
     required: true
   },
   tasksId: {
-    type: [],
-    required: false
+    type: Array,
+    required: true
   },
   commentsId: {
-    type: [],
-    required: false
+    type: Array,
+    required: true
+  },
+  advancedIds: {
+    type: Array,
+    required: true
   }
 }, {
   timestamps: true
