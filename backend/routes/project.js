@@ -31,4 +31,9 @@ router.post('/new-project', async (req, res) => {
   res.send(newProject._id);
 });
 
+router.get('/project/:id', async (req, res) => {
+  const projects = await Project.findById(req.params.id);
+  res.send(projects);
+});
+
 module.exports = router;
