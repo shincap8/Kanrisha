@@ -54,7 +54,7 @@ router.post('/tasks/addfreelancers', async (req, res) => {
       freelancerId: freelancerids[i],
       taskid: taskId,
       localadvanced: 0,
-      toprojectadvnced: 0
+      toprojectadvanced: 0
     });
     await advance.save();
     freelancer.advancedIds.push(advance._id);

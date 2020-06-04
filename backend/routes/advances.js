@@ -11,6 +11,7 @@ router.get('/project-advance/:id', async (req, res) => {
   for (let i = 0; i < project.advancedIds.length; i++) {
     const advance = await Advance.findById(project.advancedIds[i]);
     if (advance) {
+      console.log(advance);
       totaladvance = totaladvance + advance.toprojectadvanced;
     }
   }
@@ -19,18 +20,21 @@ router.get('/project-advance/:id', async (req, res) => {
 
 router.get('/task-advance/:id', async (req, res) => {
   const task = await Task.findById(req.params.id);
-  console.log(task);
   if (task.tasktype === 1) {
     const amountoffreelancers = task.freelancersId.length;
-    const individualweight = task.weight / amountoffreelancers;
+    const individualweight = (task.weight / amountoffreelancers) / 100;
     let totaladvance = 0;
-    for (let i = 0; i < task.advancedIds; i++) {
-      const advanced = Advance.findById(task.advancedIds[i]);
+    for (let i = 0; i < task.advancesId.length; i++) {
+      const castId = String(task.advancesId[i]);
+      const advanced = await Advance.findById(castId);
       if (advanced) {
-        totaladvance = totaladvance + (advanced.localadvance * individualweight);
+        advanced.toprojectadvanced = advanced.localadvanced * individualweight;
+        advanced.save();
+        totaladvance = totaladvance + (advanced.localadvanced * individualweight);
       }
     }
-    res.send(String(totaladvance));
+    const weightedadvance = (totaladvance * 100) / task.weight;
+    res.send(String(weightedadvance));
   }
 });
 
