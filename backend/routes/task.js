@@ -14,6 +14,7 @@ router.post('/new-task', async (req, res) => {
     freelancer,
     weight,
     tasktype,
+    amount,
     deadline
   } = req.body;
   const newTask = new Task({
@@ -24,17 +25,14 @@ router.post('/new-task', async (req, res) => {
     freelancer,
     weight,
     tasktype,
+    amount,
     deadline
   });
   await newTask.save();
   console.log(newTask);
   const project = await Project.findById(projectId);
-  if (project) {
-    project.tasksId.push(newTask._id);
-    project.save();
-  } else {
-    res.send(false);
-  }
+  project.tasksId.push(newTask._id);
+  project.save();
   res.send(newTask._id);
 });
 
@@ -55,13 +53,15 @@ router.post('/tasks/addfreelancers', async (req, res) => {
     const advance = Advance({
       freelancerId: freelancerids[i],
       taskid: taskId,
-      advanced: 40
+      localadvanced: 0,
+      toprojectadvnced: 0
     });
     await advance.save();
     freelancer.advancedIds.push(advance._id);
     freelancer.projectsId.push(project._id);
     project.advancedIds.push(advance._id);
     task.freelancersId.push(freelancerids[i]);
+    task.advancesId.push(advance._id);
     await freelancer.save();
     await project.save();
     await task.save();

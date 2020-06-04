@@ -29,6 +29,14 @@ const taskSchema = new Schema({
     type: Number,
     required: true
   },
+  amount: {
+    type: Number,
+    required: true
+  },
+  advancesId: {
+    type: Array,
+    required: true
+  },
   deadline: {
     type: String,
     required: true

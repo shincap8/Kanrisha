@@ -9,7 +9,11 @@ const projectSchema = new Schema({
     type: Object,
     required: true
   },
-  advanced: {
+  localadvanced: {
+    type: Number,
+    required: true
+  },
+  toprojectadvanced: {
     type: Number,
     required: true
   }
