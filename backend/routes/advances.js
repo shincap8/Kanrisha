@@ -20,7 +20,7 @@ router.get('/project-advance/:id', async (req, res) => {
 
 router.get('/task-advance/:id', async (req, res) => {
   const task = await Task.findById(req.params.id);
-  if (task.tasktype === 1) {
+  if (task.tasktype === 0 || task.tasktype === 1) {
     const amountoffreelancers = task.freelancersId.length;
     const individualweight = (task.weight / amountoffreelancers) / 100;
     let totaladvance = 0;
@@ -51,7 +51,7 @@ router.put('/modifyadvance', async (req, res) => {
     const advance = await Advance.findById(castId);
     if (advance) {
       if (advance.taskid === taskid) {
-        if (task.tasktype === 1) {
+        if (task.tasktype === 0 || task.tasktype === 1) {
           advance.localadvanced = value;
           const amountoffreelancers = task.freelancersId.length;
           const partialweight = (task.weight / amountoffreelancers) / 100;

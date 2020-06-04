@@ -16,6 +16,10 @@ const projectSchema = new Schema({
   toprojectadvanced: {
     type: Number,
     required: true
+  },
+  localamount: {
+    type: Number,
+    required: false
   }
 }, {
   timestamps: true

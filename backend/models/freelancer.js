@@ -29,6 +29,10 @@ const freelancerSchema = new Schema({
   advancedIds: {
     type: Array,
     required: true
+  },
+  profession: {
+    type: String,
+    required: true
   }
 }, {
   timestamps: true

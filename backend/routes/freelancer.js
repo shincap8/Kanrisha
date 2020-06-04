@@ -26,4 +26,10 @@ router.post('/signUp/freelancer', async (req, res) => {
   res.send(true);
 });
 
+router.get('/all-freelancers', async (req, res) => {
+  const freelancer = await Freelancer.find();
+  console.log(freelancer);
+  res.send(freelancer);
+});
+
 module.exports = router;

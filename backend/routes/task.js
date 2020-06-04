@@ -50,13 +50,25 @@ router.post('/tasks/addfreelancers', async (req, res) => {
     if (!(project.freelancersId.includes(freelancerids[i]))) {
       project.freelancersId.push(freelancerids[i]);
     }
-    const advance = Advance({
-      freelancerId: freelancerids[i],
-      taskid: taskId,
-      localadvanced: 0,
-      toprojectadvanced: 0
-    });
-    await advance.save();
+    let advance = null;
+    if (task.tasktype === 0 || task.tasktype === 1) {
+      advance = Advance({
+        freelancerId: freelancerids[i],
+        taskid: taskId,
+        localadvanced: 0,
+        toprojectadvanced: 0
+      });
+      await advance.save();
+    } else {
+      advance = Advance({
+        freelancerId: freelancerids[i],
+        taskid: taskId,
+        localadvanced: 0,
+        toprojectadvanced: 0,
+        localamount: 0
+      });
+      await advance.save();
+    }
     freelancer.advancedIds.push(advance._id);
     freelancer.projectsId.push(project._id);
     project.advancedIds.push(advance._id);
@@ -81,6 +93,16 @@ router.post('/tasks/deletefreelancers', async (req, res) => {
     freelancer.save();
   }
   res.send(true);
+});
+
+router.get('/task/freelancers/:id', async (req, res) => {
+  const task = await Task.findById(req.params.id);
+  const store = [];
+  for (let i = 0; i < task.freelancersId.length; i++) {
+    const freelancer = await Freelancer.findById(task.freelancersId[i]);
+    store.push(freelancer);
+  }
+  res.send(store);
 });
 
 module.exports = router;
