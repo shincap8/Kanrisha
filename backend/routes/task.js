@@ -4,6 +4,7 @@ const Task = require('../models/task');
 const Project = require('../models/projects');
 const Freelancer = require('../models/freelancer');
 const Advance = require('../models/advance_measure');
+const Comment = require('../models/comments');
 
 router.post('/new-task', async (req, res) => {
   const {
@@ -93,6 +94,38 @@ router.post('/tasks/deletefreelancers', async (req, res) => {
     freelancer.save();
   }
   res.send(true);
+});
+
+router.post('/createcomment', async (req, res) => {
+  const {
+    title,
+    taskId,
+    description,
+    idowner,
+    profiletype
+  } = req.body;
+  const newComment = new Comment({
+    title,
+    taskId,
+    description,
+    idowner,
+    profiletype
+  });
+  await newComment.save();
+  const task = await Task.findById(taskId);
+  task.commentsId.push(newComment._id);
+  await task.save();
+  res.send(newComment);
+});
+
+router.get('/comments-task/:id', async (req, res) => {
+  const task = await Task.findById(req.params.id);
+  const store = [];
+  for (let i = 0; i < task.commentsId.length; i++) {
+    const comment = await Comment.findById(task.commentsId[i]);
+    store.push(comment);
+  }
+  res.send(store);
 });
 
 router.get('/task/freelancers/:id', async (req, res) => {

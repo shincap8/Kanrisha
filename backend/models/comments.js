@@ -16,6 +16,10 @@ const commentSchema = new Schema({
   idowner: {
     type: String,
     required: true
+  },
+  profiletype: {
+    type: Number,
+    required: true
   }
 }, {
   timestamps: true
