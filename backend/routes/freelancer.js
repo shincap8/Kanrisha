@@ -10,7 +10,8 @@ router.post('/signUp/freelancer', async (req, res) => {
     tasksId,
     commentsId,
     advancedIds,
-    password
+    password,
+    profession
   } = req.body;
   const newFreelancer = new Freelancer({
     name,
@@ -19,7 +20,8 @@ router.post('/signUp/freelancer', async (req, res) => {
     tasksId,
     commentsId,
     advancedIds,
-    password
+    password,
+    profession
   });
   await newFreelancer.save();
   console.log(req.body);
