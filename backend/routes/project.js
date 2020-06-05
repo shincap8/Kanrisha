@@ -37,6 +37,27 @@ router.get('/project/:id', async (req, res) => {
   res.send(projects);
 });
 
+router.get('/active-project/:id', async (req, res) => {
+  const manager = await Manager.findById(req.params.id);
+  const store = [];
+  for (let i = 1; i < manager.projectsId.length; i++) {
+    const project = await Project.findById(manager.projectsId[i]);
+    if (project) {
+      if (project.status === true) {
+        store.push(project);
+      }
+    }
+  }
+  res.send(store);
+});
+
+router.put('/changestatus/:id', async (req, res) => {
+  const project = await Project.findById(req.params.id);
+  project.status = false;
+  project.save();
+  res.send(true);
+});
+
 router.get('/project/freelancers/:id', async (req, res) => {
   const projects = await Project.findById(req.params.id);
   const store = [];
