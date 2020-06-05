@@ -38,6 +38,15 @@ router.post('/signIn/manager', async (req, res) => {
 }
 );
 
+router.get('/manager/:id', async (req, res) => {
+  const manager = await Manager.findById(req.params.id);
+  if (manager) {
+    res.send(manager);
+  } else {
+    res.send(false);
+  }
+});
+
 router.get('/projects/:id', async (req, res) => {
   const projects = await Project.find({ managerId: req.params.id });
   res.send(projects);
