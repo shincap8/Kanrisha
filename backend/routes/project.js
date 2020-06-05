@@ -3,6 +3,7 @@ const router = express.Router();
 const Project = require('../models/projects');
 const Manager = require('../models/manager');
 const Freelancer = require('../models/freelancer');
+const Task = require('../models/task');
 
 router.post('/new-project', async (req, res) => {
   const {
@@ -64,7 +65,14 @@ router.get('/project/freelancers/:id', async (req, res) => {
 router.get('/project/tasks/:id', async (req, res) => {
   const project = await Project.findById(req.params.id);
   if (project) {
-    res.send(project.tasksId);
+    const store = [];
+    for (let i = 0; i < project.tasksId.length; i++) {
+      const task = await Task.findById(project.tasksId[i]);
+      if (task) {
+        store.push(task);
+      }
+    }
+    res.send(store);
   } else {
     res.send(false);
   }
