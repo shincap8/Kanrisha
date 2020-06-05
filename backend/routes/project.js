@@ -51,13 +51,6 @@ router.get('/active-project/:id', async (req, res) => {
   res.send(store);
 });
 
-router.put('/changestatus/:id', async (req, res) => {
-  const project = await Project.findById(req.params.id);
-  project.status = false;
-  project.save();
-  res.send(true);
-});
-
 router.get('/project/freelancers/:id', async (req, res) => {
   const projects = await Project.findById(req.params.id);
   const store = [];
@@ -66,6 +59,22 @@ router.get('/project/freelancers/:id', async (req, res) => {
     store.push(freelancer);
   }
   res.send(store);
+});
+
+router.get('/project/tasks/:id', async (req, res) => {
+  const project = await Project.findById(req.params.id);
+  if (project) {
+    res.send(project.tasksId);
+  } else {
+    res.send(false);
+  }
+});
+
+router.put('/changestatus/:id', async (req, res) => {
+  const project = await Project.findById(req.params.id);
+  project.status = false;
+  project.save();
+  res.send(true);
 });
 
 module.exports = router;
