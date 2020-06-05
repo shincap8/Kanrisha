@@ -34,4 +34,9 @@ router.get('/all-freelancers', async (req, res) => {
   res.send(freelancer);
 });
 
+router.get('/freelancer/:id', async (req, res) => {
+  const freelancer = await Freelancer.findById(req.params.id);
+  res.send(freelancer);
+});
+
 module.exports = router;
