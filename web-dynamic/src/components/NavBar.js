@@ -14,9 +14,10 @@ export class NavBar extends React.Component {
     e.preventDefault();
 
     if (e.target.value === "Logout") {
-      console.log("Eliminé manager Id")
       history.location.state.managerId = "";
     }
+    history.location.state.projectId = "";
+    history.location.state.taskId = "";
   }
 
   render() {
@@ -27,16 +28,17 @@ export class NavBar extends React.Component {
           </Link>
           <h3 className="text-left">Personnel Manager</h3>
           <ul className="nav justify-content-end">
-            <Link to="/HomeManager">
-              <li className="nav-item nav-link" value="Projects" data-toggle="dropdown">Active Projects</li>
+            <Link to={{pathname: "/HomeManager", state: history.location.state }}>
+              <li className="nav-item nav-link" value="Active Projects" data-toggle="dropdown">Active Projects</li>
             </Link>
             <Link to="/">
-              <li className="nav-item nav-link" value="Projects" data-toggle="dropdown">All Projects</li>
+              <li className="nav-item nav-link" onClick={this.handleOnClick} value="All Projects" data-toggle="dropdown">All Projects</li>
             </Link>
-            <Link to="/NewProject">
+            <Link to={{pathname: "/NewProject", state: history.location.state}}>
               <li className="nav-item nav-link" value="New_Project">New Project</li>
             </Link>
             <Link to="/">
+              
               <li className="nav-item nav-link" value="Logout">Logout</li>
             </Link>
           </ul>

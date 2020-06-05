@@ -23,7 +23,7 @@ class TaskListItem extends React.Component {
   }
 }
 
-export class TasksList extends React.Component {
+class TasksList extends React.Component {
   render() {
     return (
       <div className="TaskList">
@@ -40,3 +40,5 @@ export class TasksList extends React.Component {
     );
   }
 }
+
+export default TasksList;

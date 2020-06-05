@@ -9,18 +9,22 @@ export class NewProject extends React.Component {
       projectName: '',
       description: '',
       deadline: new Date(),
-      tasksId: 'default',
+      tasksId: [],
       managerId: history.location.state.managerId,
-      freelancersId: 'default',
+      freelancersId: [],
       status: true,
       advanced: 0
     },
+    projectId: "",
+    managerId: history.location.state.managerId,
+    previousPage: "NewProject",
   };
   
   constructor (props) {
     super (props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    console.log(history);
   }
 
   handleChange (e) {
@@ -34,6 +38,7 @@ export class NewProject extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault();
+    console.log("inside submit")
     const { projectName, description, deadline, tasksId, managerId, freelancersId, status, advanced } = this.state.project;
     axios.post(
       'http://localhost:3002/new-project',
@@ -47,7 +52,8 @@ export class NewProject extends React.Component {
         status: status,
         advanced: advanced
       }).then(response => {
-        console.log(response);
+        this.setState({ projectId: response.data });
+        history.push('/ProjectPage', this.state);
       }).catch(error => {
         console.log("error" + error);
       })
@@ -57,10 +63,7 @@ export class NewProject extends React.Component {
   };
 
   handleDate = deadline => {
-    this.setState({ project: { ...this.state.project, deadline: deadline},}
-    );
-    console.log(this.state.project);
-    console.log(deadline);
+    this.setState({ project: { ...this.state.project, deadline: deadline},});
   }
 
   render () {
