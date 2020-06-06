@@ -32,7 +32,7 @@
 |           Freelancer by id          |  GET |      /freelancer/freelancerid     |                                                                                                                              |
 |            Manager by id            |  GET |         /manager/managerId        |                                                                                                                              |
 |     Freelancer's task by project    |  GET |    /task/idproject/idfreelancer   |                                                                                                                              |
-|       All freelancer's project      |  GET | /project/freelanceer/freelancerid |                                                                                                                              |
+|       All freelancer's project      |  GET | /project/freelancer/freelancerid |                                                                                                                              |
 |                                     |      |                                   |                                                                                                                              |
 |                                     |      |                                   |                                                                                                                              |
 |                                     |      |                                   |                                                                                                                              |
