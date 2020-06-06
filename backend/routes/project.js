@@ -34,8 +34,17 @@ router.post('/new-project', async (req, res) => {
 });
 
 router.get('/project/freelancer/:freelancerid', async (req, res) => {
-  const projects = await Project.find({ freelancerId: req.params.id });
-  res.send(projects);
+  const freelancer = await Freelancer.findById(req.params.freelancerid);
+  const store = [];
+  if (freelancer) {
+    for (let i = 0; i < freelancer.projectsId.length; i++) {
+      const project = await Project.findById(freelancer.projectsId[i]);
+      store.push(project);
+    }
+    res.send(store);
+  } else {
+    res.send(false);
+  }
 });
 
 router.get('/project/:id', async (req, res) => {
