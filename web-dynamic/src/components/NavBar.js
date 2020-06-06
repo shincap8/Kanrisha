@@ -4,22 +4,6 @@ import logo from '../img/Logo.png';
 import history from '../history';
 
 export class NavBar extends React.Component {
-  constructor (props){
-    super(props);
-
-    this.handleOnClick = this.handleOnClick.bind(this);
-  }
-
-  handleOnClick (e) {
-    e.preventDefault();
-
-    if (e.target.value === "Logout") {
-      history.location.state.managerId = "";
-    }
-    history.location.state.projectId = "";
-    history.location.state.taskId = "";
-  }
-
   render() {
     return (
       <nav className="navbar navbar-light bg-light">
@@ -31,8 +15,8 @@ export class NavBar extends React.Component {
             <Link to={{pathname: "/HomeManager", state: history.location.state }}>
               <li className="nav-item nav-link" value="Active Projects" data-toggle="dropdown">Active Projects</li>
             </Link>
-            <Link to="/">
-              <li className="nav-item nav-link" onClick={this.handleOnClick} value="All Projects" data-toggle="dropdown">All Projects</li>
+          <Link to={{ pathname: "/AllProjects", state: history.location.state}}>
+              <li className="nav-item nav-link" value="All Projects" data-toggle="dropdown">All Projects</li>
             </Link>
             <Link to={{pathname: "/NewProject", state: history.location.state}}>
               <li className="nav-item nav-link" value="New_Project">New Project</li>

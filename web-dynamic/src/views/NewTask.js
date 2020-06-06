@@ -46,11 +46,11 @@ export class NewTask extends React.Component {
     e.preventDefault();
     const { taskName, description, deadline, projectId, freelancersId, commentsId, weight, tasktype, amount } = this.state.task; //add deadline
     axios.post(
-      'http://localhost:3002/new-task',
+      'http://localhost:3001/new-task',
       {
         name: taskName,
         description: description,
-        deadline: deadline,
+        deadline: deadline.toDateString(),
         projectId: projectId,
         freelancersId: freelancersId,
         commentsId: commentsId,

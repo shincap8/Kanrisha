@@ -3,7 +3,7 @@ import axios from 'axios';
 import history from '../history';
 import ProjectsList from '../components/ProjectsList';
 
-export class HomeManager extends React.Component {
+export class AllProjects extends React.Component {
   constructor(props) {
     super(props);
 
@@ -16,7 +16,7 @@ export class HomeManager extends React.Component {
   }
 
   componentDidMount () {
-    let url = 'http://localhost:3001/active-project/' + this.state.managerId;
+    const url = 'http://localhost:3001/projects/' + this.state.managerId;
     axios.get(
       url
       ).then(response => {
@@ -34,9 +34,8 @@ export class HomeManager extends React.Component {
     history.push('/ProjectPage', this.state);
   }
 
-
-
   render() {
+    console.log("all")
     return (
       <React.Fragment>
         <div className="container mt-4">

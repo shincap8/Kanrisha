@@ -8,6 +8,7 @@ import { NewProject } from '../views/NewProject';
 import { ProjectPage } from '../views/ProjectPage';
 import {NewTask} from '../views/NewTask';
 import {TaskPage} from '../views/TaskPage';
+import {AllProjects} from '../views/AllProjects';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/" component={Login} />
         <Layout>
           <Route exact path="/HomeManager" component={HomeManager} />
+          <Route exact path="/AllProjects" component={AllProjects} />
           <Route exact path="/NewProject" component={NewProject} />
           <Route exact path="/ProjectPage" component={ProjectPage} />
           <Route exact path="/NewTask" component={NewTask} />

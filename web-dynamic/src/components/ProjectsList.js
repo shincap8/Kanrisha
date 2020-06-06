@@ -1,22 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import history from '../history';
 
 
 class ProjectListItem extends React.Component {
-  render() {
+  render() {;
+    const page = history.location.pathname;
+    let color;
+    let all = "";
+    let text;
+
+    if (this.props.project.status) {
+      text = "Active";
+      color = "card-text text-right font-weight-bold text-white";
+    } else {
+      text = "Inactive";
+      color = "card-text text-right font-weight-bold text-white";
+    }
+
+    if (page !== '/HomeManager') {
+      all = <p className={color}>{text}</p>;
+    }
     return (
-      <div className="card" >
+      <div className="card text-white bg-info" >
+        <div className="card-header">
+          <h3>{ this.props.project.name }</h3>
+        </div>
         <div className="card-body">
-          <div className="card-header">
-            <h3>{ this.props.project.name }</h3>
-            </div>
-          <div className="card-body">
-            <p className="card-text">{ this.props.project.description}</p>
-            <p className="card-text">{this.props.project.deadline}</p>
-            {/* <p>Percentage completed {project.percentage}%</p> */}
-            <button onClick>Delete</button>
-          </div>
+          <p className="card-text">{ this.props.project.description}</p>
+          <p className="card-text">{this.props.project.deadline}</p>
+          {all}
+          {/* <p>Percentage completed {project.percentage}%</p> */}
         </div>
       </div>
     );
@@ -30,7 +44,7 @@ class ProjectsList extends React.Component {
         <div className="card-deck">
           {this.props.projects.map(project => {
             return (
-              <div className="col-md-4 mb-4" data-key={project._id} onClick={this.props.onClick}>
+              <div className="col-md-4 mb-4" key={project._id} data-key={project._id} onClick={this.props.onClick}>
                 <ProjectListItem project={project}/>
               </div>
             );

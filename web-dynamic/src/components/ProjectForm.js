@@ -16,9 +16,9 @@ export class ProjectForm extends React.Component {
             onChange={this.props.onChange}
             type="text"
             className="form-control"
-            name="projectName"
+            name="name"
             placeholder="Enter Project Name"
-            value={this.props.project.projectName}
+            value={this.props.project.name}
             required
           />
         </div>
