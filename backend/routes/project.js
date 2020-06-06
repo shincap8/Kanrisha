@@ -33,8 +33,13 @@ router.post('/new-project', async (req, res) => {
   res.send(newProject._id);
 });
 
-router.get('/project/:id', async (req, res) => {
-  const projects = await Project.findById(req.params.id);
+router.get('/project/manager/:managerid', async (req, res) => {
+  const projects = await Project.findById(req.params.managerid);
+  res.send(projects);
+});
+
+router.get('/project/freelanceer/:freelancerid', async (req, res) => {
+  const projects = await Project.findById(req.params.freelancerid);
   res.send(projects);
 });
 
