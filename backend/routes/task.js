@@ -138,4 +138,22 @@ router.get('/task/freelancers/:id', async (req, res) => {
   res.send(store);
 });
 
+router.get('/task/:idproject/:idfreelancer', async (req, res) => {
+  const store = [];
+  const freelancer = await Freelancer.findById(req.params.idfreelancer);
+  if (freelancer) {
+    for (let i = 0; i < freelancer.tasksId.length; i++) {
+      const task = await Task.findById(freelancer.tasksId[i]);
+      console.log(task);
+      console.log(task.projectId);
+      if (task && String(task.projectId) === req.params.idproject) {
+        store.push(task);
+      }
+    }
+    res.send(store);
+  } else {
+    res.send(false);
+  }
+});
+
 module.exports = router;
