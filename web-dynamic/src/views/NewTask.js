@@ -19,8 +19,9 @@ export class NewTask extends React.Component {
     },
     projectId: history.location.state.projectId,
     managerId: history.location.state.managerId,
+    project: history.location.state.project,
     taskId: "",
-    previousPage: "NewTask",
+    previousPage: "/NewTask",
   };
 
   constructor (props) {

@@ -3,14 +3,23 @@ import axios from 'axios';
 import history from '../history';
 import TasksList from '../components/TasksList';
 import FreelancersList from '../components/FreelancersList';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 class NewTaskBtn extends React.Component {
+  constructor (props) {
+    super (props);
+
+    this.handleOnClick = this.handleOnClick.bind(this);
+  }
+
+  handleOnClick (e) {
+    e.preventDefault();
+
+    history.push('/NewTask', this.props.newstate);
+  }
   render () {
     return (
-      <Link to={{ pathname: "/NewTask", state: history.location.state }}>
-        <li className="nav-item nav-link" value="Projects" data-toggle="dropdown">New Task</li>
-      </Link>
+      <li className="nav-item nav-link" value="Projects" data-toggle="dropdown" onClick={this.handleOnClick}>New Task</li>
     )
   }
 }
@@ -36,8 +45,14 @@ export class ProjectPage extends React.Component {
         projectId: history.location.state.projectId,
       };
     }
+
+    this.handleOnClick = this.handleOnClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
+  handleDelete() {
+    console.log(this.state.taskId);
+  }
 
   componentWillMount() {
     if (!history.location.state.previousPage) {
@@ -72,12 +87,24 @@ export class ProjectPage extends React.Component {
     });
   }
 
+  async handleOnClick(e) {
+    e.preventDefault();
+    const key = e.currentTarget.dataset.key;
+    const value = e.target.value;
+    await this.setState({ taskId: key });
+    if (value === 'delete') {
+      this.handleDelete();
+    } else {
+      history.push('/TaskPage', this.state);
+    }
+  }
+
   render() {
     const active = this.state.project.status;
     let btn;
 
     if (active === true) {
-      btn = < NewTaskBtn />;
+      btn = < NewTaskBtn newstate={this.state}/>;
     }
     return (
       <div className="container">
@@ -102,7 +129,7 @@ export class ProjectPage extends React.Component {
           </div>
           <div className="col-6">
             <h3 className="mb-4">Tasks</h3>
-            <TasksList tasks={this.state.data} />
+            <TasksList onClick={this.handleOnClick} tasks={this.state.data} />
           </div>
         </div>
       </div>

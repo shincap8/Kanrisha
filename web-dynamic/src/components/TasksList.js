@@ -10,10 +10,10 @@ class TaskListItem extends React.Component {
           </div>
           <div className="card-body">
             <p className="card-text">{ this.props.task.description}</p>
-            <p className="card-text">{this.props.task.deadline}</p>
+          <p className="card-text">{(typeof (this.props.task.deadline) === 'object') ? this.props.task.deadline.toDateString() : this.props.task.deadline}</p>
             <p className="card-text">Percentage done of the task:</p>
             {/* <p>Percentage completed {project.percentage}%</p> */}
-            <button className="btn btn-light">Delete</button>
+            <button className="btn btn-light" value="delete">Delete</button>
           </div>
         </div>
 
@@ -23,13 +23,12 @@ class TaskListItem extends React.Component {
 
 class TasksList extends React.Component {
   render() {
-    console.log(this.props.tasks)
     return (
       <div className="TaskList">
         <div className="card-deck">
           {this.props.tasks.map(task => {
             return (
-              <div className="col-md-6 mb-4" key={task._id}>
+              <div className="col-md-6 mb-4" key={task._id} data-key={task._id} onClick={this.props.onClick}>
                 <TaskListItem task={task} />
               </div>
             );
