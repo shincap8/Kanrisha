@@ -144,13 +144,20 @@ router.get('/task/:idproject/:idfreelancer', async (req, res) => {
   if (freelancer) {
     for (let i = 0; i < freelancer.tasksId.length; i++) {
       const task = await Task.findById(freelancer.tasksId[i]);
-      console.log(task);
-      console.log(task.projectId);
       if (task && String(task.projectId) === req.params.idproject) {
         store.push(task);
       }
     }
     res.send(store);
+  } else {
+    res.send(false);
+  }
+});
+
+router.get('/task/:id', async (req, res) => {
+  const task = await Task.findById(req.params.id);
+  if (task) {
+    res.send(task);
   } else {
     res.send(false);
   }
