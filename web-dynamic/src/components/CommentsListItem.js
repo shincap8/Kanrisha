@@ -1,5 +1,5 @@
 import React from 'react';
-import Anonymous from '../images/anonymous.png';
+import Anonymous from '../img/anonymous.png';
 import CommentUser from './CommentUser';
 
 export class CommentsListItem extends React.Component {

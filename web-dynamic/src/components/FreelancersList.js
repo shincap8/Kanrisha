@@ -32,6 +32,10 @@ class FreelancerListItem extends React.Component {
 
 class FreelancersList extends React.Component {
   render() {
+    let nofreelancer = "";
+    if (this.props.freelancers.length === 0) {
+      nofreelancer = <h5 className="text-muted">There are no freelancers assigned</h5>
+    }
     return (
       <React.Fragment>
         <div className="card-deck">
@@ -42,6 +46,7 @@ class FreelancersList extends React.Component {
                 </div>
               );
             })}
+            {nofreelancer}
         </div>
       </React.Fragment>
     );

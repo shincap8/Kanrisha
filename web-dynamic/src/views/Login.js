@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginManager from '../components/LoginManager';
 import Logo from '../img/Logo.png';
+import LoginFreelancer from '../components/LoginFreelancer';
 
 export class Login extends React.Component {
   constructor (props) {
@@ -19,7 +20,7 @@ export class Login extends React.Component {
     if (e.target.value === "Manager") {
       this.setState({user: "manager"});
     } else {
-      this.serState ({ user: "freelancer" });
+      this.setState ({ user: "freelancer" });
     }
   }
 
@@ -28,7 +29,9 @@ export class Login extends React.Component {
     let login;
 
     if (user === "manager") {
-      login = <LoginManager />
+      login = <LoginManager/>
+    } if (user === "freelancer") {
+      login = <LoginFreelancer/>
     }
     return (
       <div className="container">

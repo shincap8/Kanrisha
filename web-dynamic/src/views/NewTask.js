@@ -7,7 +7,7 @@ import {TaskForm} from '../components/TaskForm';
 export class NewTask extends React.Component {
   state = {
     task: {
-      taskName: '',
+      name: '',
       description: '',
       deadline: new Date(),
       projectId: history.location.state.projectId,

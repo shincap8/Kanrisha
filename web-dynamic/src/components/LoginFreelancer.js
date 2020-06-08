@@ -2,14 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import history from '../history';
 
-class LoginManager extends React.Component {
+class LoginFreelancer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       email: '',
       password: '',
-      managerId: '',
+      freelancerId: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,20 +22,20 @@ class LoginManager extends React.Component {
     });
   }
 
-  handleSubmit (e) {
+  async handleSubmit (e) {
     e.preventDefault ();
 
     const { email, password } = this.state;
 
-    axios.post(
-      'http://localhost:3001/signIn/manager',
+    await axios.post(
+      'http://localhost:3001/signIn/freelancer',
       {
         email: email,
         password: password,
       }).then(response => {
         if (response.data) {
-          this.setState({managerId: response.data, password: ""});
-          history.push('/HomeManager', this.state);
+          this.setState({freelancerId: response.data, password: ""});
+          history.push('/HomeFreelancer', this.state);
         } else {
           console.log("nah");
         }
@@ -52,7 +52,7 @@ class LoginManager extends React.Component {
         <div className="col-md-6 mt-3 mx-auto">
           <form noValidate onSubmit={this.onSubmit}>
             <div className="form-group">
-              <label htmlFor="email">Manager user:</label>
+              <label htmlFor="email">Freelancer user:</label>
               <input type="email" className="form-control" name="email" placeholder="Enter Email" value={this.state.email} onChange={this.handleChange} required/>                                
             </div>
             <div className="form-group">
@@ -69,4 +69,4 @@ class LoginManager extends React.Component {
   }
 }
 
-export default LoginManager;
+export default LoginFreelancer;

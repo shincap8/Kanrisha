@@ -1,7 +1,7 @@
 import React from 'react';
 import { CommentsListItem } from './CommentsListItem';
 import axios from 'axios';
-
+import history from '../history';
 
 
 class CommentsList extends React.Component {
@@ -14,7 +14,7 @@ class CommentsList extends React.Component {
     }
 
     componentDidMount () {
-      const url = 'http://localhost:3001/comments-task/5edb0f068bf52440143371f3';
+      const url = 'http://localhost:3001/comments-task/' + history.location.state.taskId;
       console.log(url);
       axios.get(
         url
@@ -30,17 +30,14 @@ class CommentsList extends React.Component {
     render() {
         return (
           <div className="CommentsList">
-            <div className="container">
-              <h1>Comments</h1>
-              <div className="row">
-                  {this.state.comments.map((comment, i) => {
-                  return (
-                    <div className="col-md-6" key={i}>
-                      <CommentsListItem comment={ comment } />
-                    </div>
-                  );
-                })}
-              </div>
+            <div className="row">
+                {this.state.comments.map(comment => {
+                return (
+                  <div className="col-md-6" key={comment._id}>
+                    <CommentsListItem comment={ comment } />
+                  </div>
+                );
+              })}
             </div>
           </div>
         );

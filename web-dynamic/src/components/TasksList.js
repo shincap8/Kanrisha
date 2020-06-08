@@ -23,6 +23,10 @@ class TaskListItem extends React.Component {
 
 class TasksList extends React.Component {
   render() {
+    let notask = "";
+    if (this.props.tasks.length === 0) {
+      notask = <h5 className="text.muted">There are no task assigned</h5>
+    }
     return (
       <div className="TaskList">
         <div className="card-deck">
@@ -33,6 +37,7 @@ class TasksList extends React.Component {
               </div>
             );
           })}
+          {notask}
         </div>
       </div>
     );

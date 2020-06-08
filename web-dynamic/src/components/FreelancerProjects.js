@@ -27,16 +27,16 @@ export class FreelancerProjects extends React.Component {
   }
 
   render () {
-      return (
-        <ul>
-          {this.state.data.map(project => {
-            return (
-              <li>
-                {project.name}
-              </li>
-            );
-          })}
-        </ul>
-      )
+    return (
+      <ul>
+        {this.state.data.map(project => {
+          return (
+            <li>
+              {project.name}
+            </li>
+          );
+        })}
+      </ul>
+    )
   }
 }

@@ -39,6 +39,10 @@ class ProjectListItem extends React.Component {
 
 class ProjectsList extends React.Component {
   render() {
+    let noproject = "";
+    if (this.props.projects.length === 0) {
+      noproject = <h5 className="text-muted">There are no proyects</h5>
+    }
     return (
       <div className="ProjectList">
         <div className="card-deck">
@@ -49,6 +53,7 @@ class ProjectsList extends React.Component {
               </div>
             );
           })}
+          {noproject}
         </div>
       </div>
     );
