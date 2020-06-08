@@ -23,9 +23,24 @@ router.post('/signUp/freelancer', async (req, res) => {
     password,
     profession
   });
+  newFreelancer.password = await newFreelancer.encryptpassword(password);
   await newFreelancer.save();
-  console.log(req.body);
   res.send(true);
+});
+
+router.post('/signIn/freelancer', async (req, res) => {
+  const { email, password } = req.body;
+  const freelancer = await Freelancer.findOne({ email });
+  if (!freelancer) {
+    res.send(false);
+  } else {
+    const match = await freelancer.matchpassword(password);
+    if (match) {
+      res.send(freelancer._id);
+    } else {
+      res.send(false);
+    }
+  }
 });
 
 router.get('/all-freelancers', async (req, res) => {

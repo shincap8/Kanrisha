@@ -43,7 +43,7 @@ freelancerSchema.methods.encryptpassword = async password => {
   return bcrypt.hash(password, salt);
 };
 
-freelancerSchema.matchpassword = function (password) {
+freelancerSchema.methods.matchpassword = function (password) {
   return bcrypt.compare(password, this.password);
 };
 
