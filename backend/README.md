@@ -33,7 +33,7 @@
 |            Manager by id            |  GET |         /manager/managerId        |                                                                                                                              |
 |     Freelancer's task by project    |  GET |    /task/idproject/idfreelancer   |                                                                                                                              |
 |       All freelancer's project      |  GET | /project/freelancer/freelancerid |                                                                                                                              |
-|                                     |      |                                   |                                                                                                                              |
+|       update the list of freelancers for task                              |     GET |       all-freelancers/:taskId                            |                                                                                                                              |
 |                                     |      |                                   |                                                                                                                              |
 |                                     |      |                                   |                                                                                                                              |
 |                                     |      |                                   |                                                                                                                              |

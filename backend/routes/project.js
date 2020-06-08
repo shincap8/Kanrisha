@@ -59,7 +59,7 @@ router.get('/project/:id', async (req, res) => {
 router.get('/active-project/:id', async (req, res) => {
   const manager = await Manager.findById(req.params.id);
   const store = [];
-  for (let i = 1; i < manager.projectsId.length; i++) {
+  for (let i = 0; i < manager.projectsId.length; i++) {
     const project = await Project.findById(manager.projectsId[i]);
     if (project) {
       if (project.status === true) {

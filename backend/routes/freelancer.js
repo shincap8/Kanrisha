@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Freelancer = require('../models/freelancer');
+const Task = require('../models/task');
 
 router.post('/signUp/freelancer', async (req, res) => {
   const {
@@ -47,6 +48,20 @@ router.get('/all-freelancers', async (req, res) => {
   const freelancer = await Freelancer.find();
   console.log(freelancer);
   res.send(freelancer);
+});
+
+router.get('/all-freelancers/:taskId', async (req, res) => {
+  const task = await Task.findById(req.params.taskId);
+  if (task) {
+    const freelancer = await Freelancer.find();
+    const store = [];
+    for (let i = 0; i < task.freelancersId.length; i++) {
+      if (!(freelancer.some(e => e._id === task.freelancersId[i]))) {
+        store.push(freelancer[i]);
+      }
+    }
+    res.send(store);
+  }
 });
 
 router.get('/freelancer/:id', async (req, res) => {
