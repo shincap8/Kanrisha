@@ -54,9 +54,10 @@ router.get('/all-freelancers/:taskId', async (req, res) => {
   const task = await Task.findById(req.params.taskId);
   if (task) {
     const freelancer = await Freelancer.find();
+    console.log(freelancer[0]._id);
     const store = [];
-    for (let i = 0; i < task.freelancersId.length; i++) {
-      if (!(freelancer.some(e => e._id === task.freelancersId[i]))) {
+    for (let i = 0; i < freelancer.length; i++) {
+      if (!(task.freelancersId.includes(freelancer[i]._id))) {
         store.push(freelancer[i]);
       }
     }
