@@ -71,7 +71,9 @@ router.post('/tasks/addfreelancers', async (req, res) => {
       await advance.save();
     }
     freelancer.advancedIds.push(advance._id);
-    freelancer.projectsId.push(project._id);
+    if (!(freelancer.projectsId.includes(projectid))) {
+      freelancer.projectsId.push(project._id);
+    }
     project.advancedIds.push(advance._id);
     task.freelancersId.push(freelancerids[i]);
     task.advancesId.push(advance._id);

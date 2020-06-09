@@ -70,6 +70,22 @@ router.get('/active-project/:id', async (req, res) => {
   res.send(store);
 });
 
+router.get('/active-project/freelancer/:id', async (req, res) => {
+  const freelancer = await Freelancer.findById(req.params.id);
+  const store = [];
+  if (freelancer) {
+    for (let i = 0; i < freelancer.projectsId.length; i++) {
+      const project = await Project.findById(freelancer.projectsId[i]);
+      if (project && project.status === true) {
+        store.push(project);
+      }
+    }
+    res.send(store);
+  } else {
+    res.send(false);
+  }
+});
+
 router.get('/project/freelancers/:id', async (req, res) => {
   const projects = await Project.findById(req.params.id);
   const store = [];
