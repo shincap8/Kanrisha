@@ -25,7 +25,7 @@ class ProjectDescription extends React.Component {
     const active = this.props.project.status;
     let btn = "";
 
-    if (active === true && history.location.pathname === "/ProjectPage") {
+    if (active === true && history.location.pathname === "/ProjectPage" && history.location.state.user === "manager") {
         btn = <NewTaskBtn newstate={this.props.newstate} />;
     }
     return (

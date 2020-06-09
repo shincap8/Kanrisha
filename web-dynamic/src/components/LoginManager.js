@@ -10,6 +10,8 @@ class LoginManager extends React.Component {
       email: '',
       password: '',
       managerId: '',
+      user: this.props.user,
+      freelancerId: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -35,9 +37,9 @@ class LoginManager extends React.Component {
       }).then(response => {
         if (response.data) {
           this.setState({managerId: response.data, password: ""});
-          history.push('/HomeManager', this.state);
+          history.push('/Home', this.state);
         } else {
-          console.log("nah");
+          alert("Check your email or password");
         }
       })
       .catch(error => {

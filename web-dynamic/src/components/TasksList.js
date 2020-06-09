@@ -24,15 +24,19 @@ class TaskListItem extends React.Component {
 class TasksList extends React.Component {
   render() {
     let notask = "";
+    let classM = "col-md-4 mb-4"
     if (this.props.tasks.length === 0) {
       notask = <h5 className="text.muted">There are no task assigned</h5>
+    } 
+    if (this.props.user === "manager") {
+      classM = "col-md-6 mb-4";
     }
     return (
       <div className="TaskList">
         <div className="card-deck">
           {this.props.tasks.map(task => {
             return (
-              <div className="col-md-6 mb-4" key={task._id} data-key={task._id} onClick={this.props.onClick}>
+              <div className={classM} key={task._id} data-key={task._id} onClick={this.props.onClick}>
                 <TaskListItem task={task} />
               </div>
             );

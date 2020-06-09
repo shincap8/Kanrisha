@@ -2,8 +2,7 @@ import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import history from '../history';
 import { Login } from '../views/Login';
-import { HomeManager } from '../views/HomeManager';
-import { HomeFreelancer } from '../views/HomeFreelancer';
+import { Home } from '../views/Home';
 import { Layout } from './Layout';
 import { NewProject } from '../views/NewProject';
 import { ProjectPage } from '../views/ProjectPage';
@@ -17,8 +16,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Login} />
         <Layout>
-          <Route exact path="/HomeManager" component={HomeManager} />
-          <Route exact path="/HomeFreelancer" component={HomeFreelancer} />
+          <Route exact path="/Home" component={Home} />
           <Route exact path="/AllProjects" component={AllProjects} />
           <Route exact path="/NewProject" component={NewProject} />
           <Route exact path="/ProjectPage" component={ProjectPage} />

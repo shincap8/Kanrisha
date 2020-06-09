@@ -16,6 +16,8 @@ export class ProjectPage extends React.Component {
         project: history.location.state.project,
         managerId: history.location.state.managerId,
         projectId: history.location.state.projectId,
+        freelancerId: history.location.state.freelancerId,
+        user: history.location.state.user,
       }
     } else {
       this.state = {
@@ -24,6 +26,8 @@ export class ProjectPage extends React.Component {
         freelancers: [],
         managerId: history.location.state.managerId,
         projectId: history.location.state.projectId,
+        freelancerId: history.location.state.freelancerId,
+        user: history.location.state.user,
       };
     }
 
@@ -78,6 +82,18 @@ export class ProjectPage extends React.Component {
   }
 
   render() {
+    const user = this.state.user;
+    let freelancer_list = "";
+    let classN = "col-12";
+
+    if (user === "manager") {
+      freelancer_list = <div className="col-6">
+                          <h5 className="mb-4">Freelancers</h5>
+                          <FreelancersList freelancers={this.state.freelancers} />
+                        </div>
+      classN = "col-6";
+    }
+
     return (
       <div className="container">
         <div className="row mt-3">
@@ -86,13 +102,10 @@ export class ProjectPage extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-6">
-            <h4 className="mb-4">Freelancers</h4>
-            <FreelancersList freelancers={this.state.freelancers}/>
-          </div>
-          <div className="col-6">
-            <h4 className="mb-4">Tasks</h4>
-            <TasksList onClick={this.handleOnClick} tasks={this.state.data} />
+          {freelancer_list}
+          <div className={classN}>
+            <h5 className="mb-4">Tasks</h5>
+            <TasksList onClick={this.handleOnClick} tasks={this.state.data} user={this.state.user}/>
           </div>
         </div>
       </div>

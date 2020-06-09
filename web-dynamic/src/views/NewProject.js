@@ -18,6 +18,8 @@ export class NewProject extends React.Component {
     projectId: "",
     managerId: history.location.state.managerId,
     previousPage: "NewProject",
+    user: history.location.state.user,
+    freelancerId: history.location.freelancerId,
   };
   
   constructor (props) {

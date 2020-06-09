@@ -7,7 +7,7 @@ export class NavBar extends React.Component {
   render() {
     let newProject = "";
 
-    if ("managerId" in history.location.state) {
+    if (history.location.state.user === 'manager') {
       newProject = <Link to={{ pathname: "/NewProject", state: history.location.state }}>
                     <li className="nav-item nav-link" value="New_Project">New Project</li>
                   </Link>
@@ -19,7 +19,7 @@ export class NavBar extends React.Component {
         </Link>
         <h3 className="text-left">Personnel Manager</h3>
         <ul className="nav justify-content-end">
-          <Link to={{pathname: "/HomeManager", state: history.location.state }}>
+          <Link to={{pathname: "/Home", state: history.location.state }}>
             <li className="nav-item nav-link" value="Active Projects" data-toggle="dropdown">Active Projects</li>
           </Link>
           <Link to={{ pathname: "/AllProjects", state: history.location.state}}>

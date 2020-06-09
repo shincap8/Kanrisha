@@ -41,8 +41,10 @@ class FreelancersList extends React.Component {
         <div className="card-deck">
             {this.props.freelancers.map(freelancer => {
               return (
-                <div className="card mb-4" key={freelancer._id}>
-                  <FreelancerListItem freelancer={ freelancer } />
+                <div className="col-6">
+                  <div className="card mb-4" key={freelancer._id}>
+                    <FreelancerListItem freelancer={ freelancer } />
+                  </div>
                 </div>
               );
             })}

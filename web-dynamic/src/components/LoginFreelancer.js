@@ -10,6 +10,8 @@ class LoginFreelancer extends React.Component {
       email: '',
       password: '',
       freelancerId: '',
+      user: this.props.user,
+      managerId: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -35,7 +37,7 @@ class LoginFreelancer extends React.Component {
       }).then(response => {
         if (response.data) {
           this.setState({freelancerId: response.data, password: ""});
-          history.push('/HomeFreelancer', this.state);
+          history.push('/Home', this.state);
         } else {
           console.log("nah");
         }

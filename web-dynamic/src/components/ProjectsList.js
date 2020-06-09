@@ -18,7 +18,7 @@ class ProjectListItem extends React.Component {
       color = "card-text text-right font-weight-bold text-white";
     }
 
-    if (page !== '/HomeManager') {
+    if (page !== '/Home') {
       all = <p className={color}>{text}</p>;
     }
     return (

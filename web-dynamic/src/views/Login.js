@@ -29,9 +29,9 @@ export class Login extends React.Component {
     let login;
 
     if (user === "manager") {
-      login = <LoginManager/>
+      login = <LoginManager user={this.state.user}/>
     } if (user === "freelancer") {
-      login = <LoginFreelancer/>
+      login = <LoginFreelancer user={this.state.user}/>
     }
     return (
       <div className="container">

@@ -10,21 +10,34 @@ export class AllProjects extends React.Component {
     this.state = {
       data: [],
       managerId: history.location.state.managerId,
+      user: history.location.state.user,
+      freelancerId: history.location.state.freelancerId,
     };
 
     this.handleOnClick = this.handleOnClick.bind(this);
   }
 
   componentDidMount () {
-    const url = 'http://localhost:3001/projects/' + this.state.managerId;
-    axios.get(
-      url
+    if (this.state.user === "manager") {
+      const url = 'http://localhost:3001/projects/' + this.state.managerId;
+      axios.get(
+        url
       ).then(response => {
         this.setState({ data: response.data })
-        console.log(response.data)
       }).catch(error => {
         console.log("registration error", error);
       });
+    } else {
+      const url = 'http://localhost:3001/project/' + this.state.managerId;
+      axios.get(
+        url
+      ).then(response => {
+        this.setState({ data: response.data })
+      }).catch(error => {
+        console.log("registration error", error);
+      });
+    }
+    
   }
 
   async handleOnClick (e) {
@@ -35,7 +48,6 @@ export class AllProjects extends React.Component {
   }
 
   render() {
-    console.log("all")
     return (
       <React.Fragment>
         <div className="container mt-4">

@@ -9,21 +9,29 @@ class ModalFreelancer extends React.Component {
             show: false,
         }
 
-        this.handleModal = this.handleModal.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+        this.handleShow = this.handleShow.bind(this);
     }
 
-    handleModal() {
-        this.setState({ show: !this.state.show });
+    handleShow () {
+      this.setState({ show: true });
+    }
+
+    handleClose (e) {
+      if(e.target.value === "Add") {
+        this.props.onSubmit();
+      }
+      this.setState({ show: false });
     }
     
   render () {
     return (
       <div>
-      <Button variant="info" onClick={this.handleModal}>
+      <Button variant="info" onClick={this.handleShow}>
         Add Freelancers
       </Button>
 
-      <Modal show={this.state.show} onHide={this.handleModal}>
+      <Modal show={this.state.show} onHide={this.handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Freelancers</Modal.Title>
         </Modal.Header>
@@ -41,10 +49,10 @@ class ModalFreelancer extends React.Component {
         
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={this.handleModal}>
+          <Button variant="secondary" onClick={this.handleClose}>
             Cancel
           </Button>
-          <Button variant="info" onClick={this.handleModal}>
+          <Button variant="info" onClick={this.handleClose} value="Add">
             Add
           </Button>
         </Modal.Footer>
