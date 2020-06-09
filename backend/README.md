@@ -1,8 +1,8 @@
 # API Kanrisha
 ## File Structures
-- ### Routes: 
-    constains the scripts to control the data flux between Kanrisha's frontend.
-###### 1.  advances.js:
+#### 1. Routes: 
+contains the scripts to control the data flux between Kanrisha's frontend.
+###### 1.1 advances.js:
 - /new- task,
 - /tasks/addfreelancers.
 - /tasks/deletefreelancers,
@@ -11,6 +11,44 @@
 - /task/freelancers/:id,
 - /task/:idproject/:idfreelancer,
 - /task/:id
+###### 1.2 freelancers.js:
+- /signUp/freelancer,
+- /signIn/freelancer,
+- /all-freelancers,
+- /all-freelancers/:taskId,
+- /freelancer/:id,
+###### 1.3 manager.js:
+- /signUp/manager,
+- /signIn/manager,
+- /manager/:id,
+- /projects/:id
+###### 1.4 project.js:
+- /new-project,
+- /project/freelancer/:freelancerid,
+- /project/:id,
+- /active-project/:id,
+- /active-project/freelancer/:id,
+- /project/freelancers/:id,
+- /project/tasks/:id,
+- /changestatus/:id
+###### 1.5 task.js:
+- /new-task,
+- /tasks/addfreelancers,
+- /tasks/deletefreelancers,
+- /createcomment,
+- /comments-task/:id,
+- /task/freelancers/:id,
+- /task/:idproject/:idfreelancer,
+- /task/:id
+
+## 2 Models:
+contains Object class uses in the database.
+###### 2.1: advance_measure.js
+###### 2.2: comments.js
+###### 2.3: freelancer.js
+###### 2.4: manager.js
+###### 2.5: project.js
+###### 2.6: task.js
 
 ## Routes
 
