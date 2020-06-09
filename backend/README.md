@@ -1,8 +1,16 @@
 # API Kanrisha
 ## File Structures
-- models: contains Object class uses in the database.
-- routes: constains the scripts to control the data flux between Kanrisha's frontend.
-- node_modules: contains all de modules require development and functionality of karinsha's backend.
+- ### Routes: 
+    constains the scripts to control the data flux between Kanrisha's frontend.
+###### 1.  advances.js:
+- /new- task,
+- /tasks/addfreelancers.
+- /tasks/deletefreelancers,
+- /createcomment,
+- /comments-task/:id,
+- /task/freelancers/:id,
+- /task/:idproject/:idfreelancer,
+- /task/:id
 
 ## Routes
 
