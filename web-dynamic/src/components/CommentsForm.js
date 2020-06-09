@@ -1,15 +1,16 @@
 import React from 'react';
 import axios from 'axios';
+import history from '../history';
 
 
-class Comments extends React.Component {
+export class CommentsForm extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
             subject: '',
-            taskId: '5edb0f068bf52440143371f3',
+            taskId: history.location.state.taskId,
             description: '',
-            idOwner: "5ed970442679992498bd33f3",
+            idOwner: this.props.idowner,
             profileType: 0
         };
         this.handleChange = this.handleChange.bind(this);
@@ -22,10 +23,10 @@ class Comments extends React.Component {
         })
     }
 
-    handleSubmit = e => {
+    handleSubmit = async (e) => {
         e.preventDefault();
         const { subject, taskId, description, idOwner, profileType } = this.state;
-        axios.post(
+        await axios.post(
             'http://localhost:3001/createcomment',
             {
                 title: subject,
@@ -38,18 +39,20 @@ class Comments extends React.Component {
             }).catch(error => {
                 console.log("error" + error);
             })
+        this.props.commentsList();
+        this.setState({
+            subject: '',
+            description: ''
+        })
     };
 
 
     render () {
         return (
-            <div className="col-md-6 offset-md-3">
-                <h1>New Comment</h1>
-
+            <div className="col-md-12 mt-3">
                 <form onSubmit={this.onSubmit}>
 
                     <div className="form-group">
-                        <label>Subject</label>
                         <input
                             onChange={this.handleChange}
                             type="text"
@@ -62,13 +65,12 @@ class Comments extends React.Component {
                     </div>
 
                     <div className="form-group">
-                        <label>Description</label>
                         <textarea
                             onChange={this.handleChange}
                             className="form-control"
                             name="description"
                             placeholder="Enter description"
-                            value={this.state.desciption}
+                            value={this.state.description}
                             required
                         />
                     </div>
@@ -82,4 +84,4 @@ class Comments extends React.Component {
     }
 }
 
-export default Comments;
+export default CommentsForm;

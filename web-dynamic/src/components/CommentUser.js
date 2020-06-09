@@ -27,7 +27,7 @@ class CommentUser extends React.Component {
 
     render() {
         return (
-        <h3>{this.state.user.name}</h3>
+        <h5>{this.state.user.name}</h5>
         );
     }
 }

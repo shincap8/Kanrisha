@@ -1,22 +1,29 @@
 import React from 'react';
 import { CommentsListItem } from './CommentsListItem';
 import axios from 'axios';
+import { CommentsForm } from '../components/CommentsForm';
 import history from '../history';
 
 
-class CommentsList extends React.Component {
+export class Comments extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             comments: [],
         };
         console.log(this.state.comments);
+        this.getComments = this.getComments.bind(this);
     }
 
     componentDidMount () {
+      this.getComments();
+      console.log(this.state.comments);
+    }
+
+    async getComments () {
       const url = 'http://localhost:3001/comments-task/' + history.location.state.taskId;
       console.log(url);
-      axios.get(
+      await axios.get(
         url
         ).then(response => {
             console.log(response.data);
@@ -30,18 +37,18 @@ class CommentsList extends React.Component {
     render() {
         return (
           <div className="CommentsList">
-            <div className="row">
+            <div className="row justify-content-center align-items-center minh-100">
                 {this.state.comments.map(comment => {
                 return (
-                  <div className="col-md-6" key={comment._id}>
+                  <div className="col-md-11" key={comment._id}>
                     <CommentsListItem comment={ comment } />
                   </div>
                 );
               })}
             </div>
+            <CommentsForm idowner={this.props.idowner} commentsList={this.getComments.bind()}/>
           </div>
         );
       }
     }
-
-export default CommentsList;
+export default Comments;
