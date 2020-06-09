@@ -39,13 +39,12 @@ class LoginFreelancer extends React.Component {
           this.setState({freelancerId: response.data, password: ""});
           history.push('/Home', this.state);
         } else {
-          console.log("nah");
+          alert("Check your email or password");
         }
       })
       .catch(error => {
         console.log("registration error", error);
       });
-
   }
 
   render() {

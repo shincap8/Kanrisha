@@ -5,7 +5,7 @@ import AddFreelancers from '../components/AddFreelancers';
 import ProjectDescription from '../components/ProjectDescription'
 import TaskDescription from '../components/TaskDescription';
 import FreelancersList from '../components/FreelancersList';
-//import Comments from '../components/Comments';
+import Comments from '../components/Comments';
 
 export class TaskPage extends React.Component {
   constructor (props) {
@@ -35,6 +35,8 @@ export class TaskPage extends React.Component {
         freelancerId: history.location.state.freelancerId,
       };
     }
+
+    this.getFreelancers = this.getFreelancers.bind(this);
   }
   
   componentDidMount () {
@@ -42,12 +44,16 @@ export class TaskPage extends React.Component {
       const url1 = 'http://localhost:3001/task/' + history.location.state.taskId;
       axios.get(
         url1
-      ).then(response => {
-        this.setState({ task: response.data })
-      }).catch(error => {
-        console.log("registration error", error);
-      });
+        ).then(response => {
+          this.setState({ task: response.data })
+        }).catch(error => {
+          console.log("registration error", error);
+        });
     }
+    this.getFreelancers();
+  }
+
+  getFreelancers () {
     const url2 = 'http://localhost:3001/task/freelancers/' + history.location.state.taskId;
     axios.get(
       url2
@@ -56,29 +62,25 @@ export class TaskPage extends React.Component {
     }).catch(error => {
       console.log("registration error", error);
     });
-    const url3 = 'http://localhost:3001/comments-task/' + history.location.state.taskId;
-    axios.get(
-      url3
-    ).then(response => {
-      this.setState({ comments: response.data })
-    }).catch(error => {
-      console.log(error.data);
-      console.log("Error", error);
-    });
   }
+
   render() {
     const user = this.state.user;
     let freelancer_list = "";
     let add_freelancer = "";
+    let idowner;
 
     if (user === "manager") {
       freelancer_list = <div className="col-6">
                           <h5>Freelancers</h5>
-                          <FreelancersList freelancers={this.state.freelancers} />
+                          <FreelancersList freelancers={this.state.freelancers}/>
                         </div>;
       add_freelancer = <div className="col-2">
-                        <AddFreelancers taskId={this.state.taskId} projectId={this.state.projectId}/>
+        <AddFreelancers taskId={this.state.taskId} projectId={this.state.projectId} refresh={this.getFreelancers}/>
                       </div>;
+      idowner = this.state.managerId;
+    } else {
+      idowner = this.state.freelancerId;
     }
     return (
       <div className="container">
@@ -98,6 +100,7 @@ export class TaskPage extends React.Component {
           {freelancer_list}
           <div className="col-6">
             <h5>Comments</h5>
+            <Comments idowner={idowner}/>
           </div>
         </div>
       </div>

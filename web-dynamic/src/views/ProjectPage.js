@@ -50,23 +50,36 @@ export class ProjectPage extends React.Component {
         console.log("registration error", error);
       });
     }
-    const url1 = 'http://localhost:3001/project/tasks/' + history.location.state.projectId;
-    axios.get(
-      url1
-    ).then(response => {
-      this.setState({ data: response.data })
-    }).catch(error => {
-      console.log("registration error", error);
-    });
-    const url2 = 'http://localhost:3001/project/freelancers/' + history.location.state.projectId;
-    axios.get(
-      url2
-    ).then(response => {
-      this.setState({ freelancers: response.data })
-    }).catch(error => {
-      console.log(error.data);
-      console.log("Error", error);
-    });
+    if (this.state.user === 'manager') {
+
+      const url1 = 'http://localhost:3001/project/tasks/' + history.location.state.projectId;
+      axios.get(
+        url1
+        ).then(response => {
+          this.setState({ data: response.data })
+        }).catch(error => {
+          console.log("registration error", error);
+        });
+        const url2 = 'http://localhost:3001/project/freelancers/' + history.location.state.projectId;
+        axios.get(
+          url2
+          ).then(response => {
+            this.setState({ freelancers: response.data })
+          }).catch(error => {
+            console.log(error.data);
+            console.log("Error", error);
+          });
+    } else {
+      const url1 = 'http://localhost:3001/task/' + history.location.state.projectId + '/' + history.location.state.freelancerId;
+      axios.get(
+        url1
+      ).then(response => {
+        console.log(response.data)
+        this.setState({ data: response.data })
+      }).catch(error => {
+        console.log("registration error", error);
+      });
+    }
   }
 
   async handleOnClick(e) {

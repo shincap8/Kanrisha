@@ -47,11 +47,11 @@ export class NewTask extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { taskName, description, deadline, projectId, freelancersId, commentsId, weight, tasktype, amount } = this.state.task; //add deadline
+    const { name, description, deadline, projectId, freelancersId, commentsId, weight, tasktype, amount } = this.state.task; //add deadline
     axios.post(
       'http://localhost:3001/new-task',
       {
-        name: taskName,
+        name: name,
         description: description,
         deadline: deadline.toDateString(),
         projectId: projectId,

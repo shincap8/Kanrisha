@@ -13,9 +13,9 @@ export class TaskForm extends React.Component {
             onChange={this.props.onChange}
             type="text"
             className="form-control"
-            name="taskName"
+            name="name"
             placeholder="Enter Task Name"
-            value={this.props.task.taskName}
+            value={this.props.task.name}
             required
           />
         </div>

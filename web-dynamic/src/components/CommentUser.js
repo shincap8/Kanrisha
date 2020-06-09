@@ -1,5 +1,5 @@
 import React from 'react';
-
+import history from '../history';
 import axios from 'axios';
 
 class CommentUser extends React.Component {
@@ -8,21 +8,33 @@ class CommentUser extends React.Component {
         this.state = {
             user: [],
         }
-        console.log(this.state.user);
     }
 
     componentDidMount () {
+      if (history.location.state.user === "manager") {
+        const url = `http://localhost:3001/manager/${this.props.userId}`;
+        console.log(url);
+        axios.get(
+          url
+        ).then(response => {
+          this.setState({ user: response.data })
+        }).catch(error => {
+          console.log(error.data);
+          console.log("Error", error);
+        });
+      } else {
         const url = `http://localhost:3001/freelancer/${this.props.userId}`;
         console.log(url);
         axios.get(
           url
           ).then(response => {
-              console.log(response.data);
+            console.log(response.data);
             this.setState({ user: response.data })
           }).catch(error => {
             console.log(error.data);
             console.log("Error", error);
           });
+      }
     }
 
     render() {
