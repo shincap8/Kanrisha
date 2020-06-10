@@ -36,12 +36,12 @@ export class Comments extends React.Component {
     render() {
         return (
           <div className="CommentsList">
-            <div className="row justify-content-center align-items-center minh-100">
+            <div className="row">
                 {this.state.comments.map(comment => {
-                return (
-                  <div className="col-md-11" key={comment._id}>
-                    <CommentsListItem comment={ comment } />
-                  </div>
+                  return (
+                    <div className="col-md-11" key={comment._id}>
+                      <CommentsListItem comment={comment} idowner={this.props.idowner}/>
+                    </div>
                 );
               })}
             </div>

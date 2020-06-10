@@ -5,7 +5,14 @@ class TaskDescription extends React.Component {
     return (
       <div className="row">
         <div className="col-10">
-          <h5> {this.props.task.name}</h5>
+          <div className="row">
+            <div className="col-4">
+              <h5> {this.props.task.name}</h5>
+            </div>
+            <div className="col-4">
+              <h5>Done {this.props.task.amount}</h5>
+            </div>
+          </div>
           <div className="row mt-4">
             <div className="col-5">
               <p className="text-wrap"><strong>Deadline: </strong>{(typeof (this.props.task.deadline) === 'object') ? this.props.task.deadline.toDateString() : this.props.task.deadline}</p>

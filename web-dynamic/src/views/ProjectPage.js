@@ -33,6 +33,7 @@ export class ProjectPage extends React.Component {
 
     this.handleOnClick = this.handleOnClick.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.loadProject = this.loadProject.bind(this);
   }
 
   handleDelete() {
@@ -41,14 +42,7 @@ export class ProjectPage extends React.Component {
 
   componentDidMount(){
     if (!history.location.state.previousPage) {
-      const url3 = 'http://localhost:3001/project/' + history.location.state.projectId;
-      axios.get(
-        url3
-      ).then(response => {
-        this.setState({ project: response.data })
-      }).catch(error => {
-        console.log("registration error", error);
-      });
+      this.loadProject();
     }
     if (this.state.user === 'manager') {
 
@@ -82,6 +76,17 @@ export class ProjectPage extends React.Component {
     }
   }
 
+  loadProject () {
+    const url3 = 'http://localhost:3001/project/' + history.location.state.projectId;
+    axios.get(
+      url3
+    ).then(response => {
+      this.setState({ project: response.data })
+    }).catch(error => {
+      console.log("registration error", error);
+    });
+  }
+
   async handleOnClick(e) {
     e.preventDefault();
     const key = e.currentTarget.dataset.key;
@@ -111,7 +116,7 @@ export class ProjectPage extends React.Component {
       <div className="container">
         <div className="row mt-3">
           <div className="col">
-            <ProjectDescription project={this.state.project} newstate={this.state}/>
+            <ProjectDescription project={this.state.project} newstate={this.state} load={this.loadProject}/>
           </div>
         </div>
         <div className="row">

@@ -10,9 +10,9 @@ class TaskListItem extends React.Component {
           </div>
           <div className="card-body">
             <p className="card-text">{ this.props.task.description}</p>
-          <p className="card-text">{(typeof (this.props.task.deadline) === 'object') ? this.props.task.deadline.toDateString() : this.props.task.deadline}</p>
+            <p className="card-text">{(typeof (this.props.task.deadline) === 'object') ? this.props.task.deadline.toDateString() : this.props.task.deadline}</p>
             <p className="card-text">Percentage done of the task:</p>
-            {/* <p>Percentage completed {project.percentage}%</p> */}
+            <p className="card-text">Done {this.props.task.amount}</p>
             {/*<button className="btn btn-light" value="delete">Delete</button>*/}
           </div>
         </div>

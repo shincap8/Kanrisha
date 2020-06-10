@@ -25,7 +25,11 @@ export class CommentsForm extends React.Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
-        const { subject, taskId, description, idOwner, profileType } = this.state;
+        let profileType = 0;
+        if (history.location.state.user === "freelancer") {
+            profileType = 1;
+        }
+        const { subject, taskId, description, idOwner } = this.state;
         await axios.post(
             'http://localhost:3001/createcomment',
             {

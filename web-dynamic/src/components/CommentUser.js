@@ -1,5 +1,4 @@
 import React from 'react';
-import history from '../history';
 import axios from 'axios';
 
 class CommentUser extends React.Component {
@@ -11,7 +10,8 @@ class CommentUser extends React.Component {
     }
 
     componentDidMount () {
-      if (history.location.state.user === "manager") {
+      if (this.props.type === 0) {
+        console.log("not else")
         const url = `http://localhost:3001/manager/${this.props.userId}`;
         console.log(url);
         axios.get(
@@ -23,6 +23,7 @@ class CommentUser extends React.Component {
           console.log("Error", error);
         });
       } else {
+        console.log("else")
         const url = `http://localhost:3001/freelancer/${this.props.userId}`;
         console.log(url);
         axios.get(

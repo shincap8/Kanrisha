@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-//import history from '../history';
+import history from '../history';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
 
@@ -9,11 +9,9 @@ export class Advanced extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            type: 2,//"props"
-            freelancerId: "5edff7a2b18eac2bc8132ff2",//"history",
-            taskId: "5edff759b18eac2bc8132ff1", //"history...",
+            freelancerId: history.location.state.freelancerId,
+            taskId: history.location.state.taskId,
             value: 0,
-            x: 0
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -67,7 +65,7 @@ export class Advanced extends React.Component {
 
     render () {
         let type_render = '';
-        if (this.state.type === 0) {
+        if (this.props.type === 0) {
             type_render = <div className="">
                                 <label className="col-md-4">
                                     <input type="checkbox"
@@ -76,7 +74,8 @@ export class Advanced extends React.Component {
                                     Done
                                 </label>
                             </div>
-        } else if (this.state.type === 2) {
+        } else if (this.props.type === 2) {
+            console.log("entre")
             type_render =  <div className="form-group">
                                 <div className="row ml-0">
                                     <label className="mr-2">Update</label>
@@ -94,24 +93,22 @@ export class Advanced extends React.Component {
                             </div>
         } else {
             type_render = <div className="form-group">
-                            <label className="mr-2">Update</label>
-                            <div className="col md-6">
-                                <div className="col-4">
-                                    <RangeSlider
-                                        value={this.state.value}
-                                        onChange={this.setValue}
-                                        tooltip='on'
-                                    />
-                            </div>
+                            <label className="mr-2 font-weight-bold">Update</label>
+                            <div className="col-8 md-4">
+                                <RangeSlider
+                                    value={this.state.value}
+                                    onChange={this.setValue}
+                                    tooltip='on'
+                                />
                             </div>
                         </div>
         }
         return (
-            <div className="col-md-12 mt-3">
+            <div className="col-6">
+                <h5>Task advance</h5>
+                <h6 className="mt-5">Please submit your progress</h6>
                 <form onSubmit={this.onSubmit}>
-                    <div>
-                        <h1>Task Name</h1>
-                        <h4>Task description</h4>
+                    <div className="mt-5">
                         {type_render}
                     </div>
 

@@ -6,6 +6,7 @@ import ProjectDescription from '../components/ProjectDescription'
 import TaskDescription from '../components/TaskDescription';
 import FreelancersList from '../components/FreelancersList';
 import Comments from '../components/Comments';
+import Advance from '../components/Advance';
 
 export class TaskPage extends React.Component {
   constructor (props) {
@@ -69,6 +70,7 @@ export class TaskPage extends React.Component {
     let freelancer_list = "";
     let add_freelancer = "";
     let idowner;
+    let advance = "";
 
     if (user === "manager") {
       freelancer_list = <div className="col-6">
@@ -80,6 +82,7 @@ export class TaskPage extends React.Component {
                       </div>;
       idowner = this.state.managerId;
     } else {
+      advance = <Advance type={this.state.task.tasktype}/>
       idowner = this.state.freelancerId;
     }
     return (
@@ -98,6 +101,7 @@ export class TaskPage extends React.Component {
         </div>
         <div className="row mt-3">
           {freelancer_list}
+          {advance}
           <div className="col-6">
             <h5>Comments</h5>
             <Comments idowner={idowner}/>

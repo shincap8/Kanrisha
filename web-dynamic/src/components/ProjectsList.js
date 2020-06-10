@@ -1,5 +1,4 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
 import history from '../history';
 
 
@@ -9,6 +8,7 @@ class ProjectListItem extends React.Component {
     let color;
     let all = "";
     let text;
+    let advance = "";
 
     if (this.props.project.status) {
       text = "Active";
@@ -21,6 +21,11 @@ class ProjectListItem extends React.Component {
     if (page !== '/Home') {
       all = <p className={color}>{text}</p>;
     }
+
+    if (history.location.state.user === "manager") {
+      advance = <p>Percentage completed {this.props.project.advanced}%</p>
+    }
+
     return (
       <div className="card text-white bg-info" >
         <div className="card-header">
@@ -30,7 +35,7 @@ class ProjectListItem extends React.Component {
           <p className="card-text">{ this.props.project.description}</p>
           <p className="card-text">{this.props.project.deadline}</p>
           {all}
-          {/* <p>Percentage completed {project.percentage}%</p> */}
+          {advance}
         </div>
       </div>
     );

@@ -17,7 +17,6 @@ class FreelancerListItem extends React.Component {
         </div>
         <div className="row">
           <div className="card-body ml-1">
-            <p className="card-text">Task Description</p>
             <p className="card-text" >Percentage completed: {this.props.freelancer.advancedId}%</p>
             <p className="card-text">Contact: {this.props.freelancer.email}</p>
             <p className="card-text">Projects:</p>

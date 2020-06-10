@@ -11,6 +11,8 @@
     "history": "^4.10.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
+    "react-bootstrap-range-slider": "^0.3.8",
+    "react-bootstrap-slider": "^2.2.3",
     "react-datepicker": "^2.16.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
