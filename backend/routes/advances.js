@@ -51,6 +51,19 @@ router.get('/task-advance/:id', async (req, res) => {
   }
 });
 
+router.get('/freelancer/task-advance/:taskId/:freelancerId', async (req, res) => {
+  const advance = await Advance.find();
+  if (advance) {
+    for (let i = 0; i < advance.length; i++) {
+      if (advance[i].taskid === req.params.taskId && advance[i].freelancerId === req.params.freelancerId) {
+        res.send(String(advance[i].localadvanced));
+      }
+    }
+  } else {
+    res.send(false);
+  }
+});
+
 router.put('/modifyadvance', async (req, res) => {
   const {
     freelancerId,
