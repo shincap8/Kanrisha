@@ -3,7 +3,7 @@ import '../Page404.css';
 import error from '../img/error.png';
 import Logo from '../img/Logo.png';
 
-export class Page404 extends React.Component {
+export class NotFound extends React.Component {
     render() {
         return (
             <div className="container">
@@ -28,4 +28,4 @@ export class Page404 extends React.Component {
     }
 }
 
-export default Page404;
+export default NotFound;

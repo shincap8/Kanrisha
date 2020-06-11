@@ -1,6 +1,7 @@
 import React from 'react';
 import history from '../history';
 import axios from 'axios';
+import ProjectAdvance from './ProjectAdvance';
 
 class NewTaskBtn extends React.Component {
   constructor(props) {
@@ -42,7 +43,6 @@ class ChangeStatus extends React.Component {
   }
   render() {
     let text = "Close";
-    console.log(this.props.status)
     if (!this.props.status) {
       text = "Open";
     }
@@ -66,7 +66,7 @@ class ProjectDescription extends React.Component {
         NewTaskbtn = <NewTaskBtn newstate={this.props.newstate} />;
     }
     if (history.location.state.user === "manager") {
-      advance = <h3>{this.props.project.advanced} %</h3>;
+    advance = <h3><ProjectAdvance projectId={this.props.project._id}/>%</h3>;
     }
     return (
         <div className="row">

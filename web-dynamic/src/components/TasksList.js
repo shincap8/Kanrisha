@@ -1,4 +1,5 @@
 import React from 'react';
+import TaskAdvance from './TaskAdvance';
 
 
 class TaskListItem extends React.Component {
@@ -12,7 +13,7 @@ class TaskListItem extends React.Component {
             <p className="card-text">{ this.props.task.description}</p>
             <p className="card-text">{(typeof (this.props.task.deadline) === 'object') ? this.props.task.deadline.toDateString() : this.props.task.deadline}</p>
             <p className="card-text">Percentage done of the task:</p>
-            <p className="card-text">Done {this.props.task.amount}</p>
+          <p className="card-text">Done {<TaskAdvance taskId={this.props.task._id} type={this.props.task.tasktype}/>}%</p>
             {/*<button className="btn btn-light" value="delete">Delete</button>*/}
           </div>
         </div>
@@ -36,7 +37,7 @@ class TasksList extends React.Component {
         <div className="card-deck">
           {this.props.tasks.map(task => {
             return (
-              <div className={classM} key={task._id} data-key={task._id} onClick={this.props.onClick}>
+              <div className={classM} key={task._id} data-key={task._id} data-id={task.tasktype} onClick={this.props.onClick}>
                 <TaskListItem task={task} />
               </div>
             );

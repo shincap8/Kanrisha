@@ -1,4 +1,5 @@
 import React from 'react';
+import TaskAdvance from './TaskAdvance';
 
 class TaskDescription extends React.Component {
   render() {
@@ -10,7 +11,7 @@ class TaskDescription extends React.Component {
               <h5> {this.props.task.name}</h5>
             </div>
             <div className="col-4">
-              <h5>Done {this.props.task.amount}</h5>
+              <h5>Done <TaskAdvance taskId={this.props.task._id} value={this.props.value}/>%</h5>
             </div>
           </div>
           <div className="row mt-4">

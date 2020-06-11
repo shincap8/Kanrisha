@@ -11,9 +11,7 @@ class CommentUser extends React.Component {
 
     componentDidMount () {
       if (this.props.type === 0) {
-        console.log("not else")
         const url = `http://localhost:3001/manager/${this.props.userId}`;
-        console.log(url);
         axios.get(
           url
         ).then(response => {

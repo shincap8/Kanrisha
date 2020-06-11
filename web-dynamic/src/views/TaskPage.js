@@ -22,6 +22,9 @@ export class TaskPage extends React.Component {
         taskId: history.location.state.taskId,
         user: history.location.state.user,
         freelancerId: history.location.state.freelancerId,
+        value : 0,
+        advanceTask: 0,
+        tasktype: history.location.state.task.tasktype,
       }
     } else {
       this.state = {
@@ -34,10 +37,19 @@ export class TaskPage extends React.Component {
         projectId: history.location.state.projectId,
         user: history.location.state.user,
         freelancerId: history.location.state.freelancerId,
+        value: 0,
+        advanceTask : 0,
+        tasktype: history.location.state.tasktype,
       };
     }
 
     this.getFreelancers = this.getFreelancers.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangeOption = this.handleChangeOption.bind(this);
+    this.setValue = this.setValue.bind(this);
+    this.getadvanceF = this.getAdvanceF.bind(this);
   }
   
   componentDidMount () {
@@ -46,12 +58,13 @@ export class TaskPage extends React.Component {
       axios.get(
         url1
         ).then(response => {
-          this.setState({ task: response.data })
+          this.setState({ task: response.data})
         }).catch(error => {
           console.log("registration error", error);
         });
     }
     this.getFreelancers();
+    this.getAdvanceF();
   }
 
   getFreelancers () {
@@ -65,6 +78,61 @@ export class TaskPage extends React.Component {
     });
   }
 
+  async getAdvanceF () {
+    const url = 'http://localhost:3001/freelancer/task-advance/' + this.state.taskId + '/' + this.state.freelancerId;
+    await axios.get(
+      url
+    ).then(response => {
+      this.setState({ advanceTask: response.data });
+    }).catch(error => {
+      console.log("error", error);
+    })
+  }
+
+  async handleSubmit (e) {
+    e.preventDefault();
+    const { freelancerId, taskId, value } = this.state;
+    await axios.put(
+      'http://localhost:3001/modifyadvance',
+      {
+        freelancerId: freelancerId,
+        taskid: taskId,
+        value: value
+      }).then(response => {
+        console.log(response);
+      }).catch(error => {
+        console.log("error" + error);
+      })
+    console.log(value);
+    this.getAdvanceF();
+    console.log(this.state.advanceTask)
+  };
+
+  setValue(e) {
+    this.setState({
+      value: Number(e.target.value)
+    })
+
+  }
+
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+    console.log(this.state.value);
+  }
+
+  handleChangeOption = (event) => {
+    if (event.target.checked) {
+      console.log('Entra');
+      this.setState({
+        value: 100,
+      })
+    };
+    console.log(event.target.value);
+    console.log(this.state.value);
+  };
+
   render() {
     const user = this.state.user;
     let freelancer_list = "";
@@ -75,14 +143,14 @@ export class TaskPage extends React.Component {
     if (user === "manager") {
       freelancer_list = <div className="col-6">
                           <h5>Freelancers</h5>
-                          <FreelancersList freelancers={this.state.freelancers}/>
+                          <FreelancersList freelancers={this.state.freelancers} tasktype={this.state.tasktype}/>
                         </div>;
       add_freelancer = <div className="col-2">
         <AddFreelancers taskId={this.state.taskId} projectId={this.state.projectId} refresh={this.getFreelancers}/>
                       </div>;
       idowner = this.state.managerId;
     } else {
-      advance = <Advance type={this.state.task.tasktype}/>
+      advance = <Advance type={this.state.task.tasktype} onSubmit={this.handleSubmit} onChange={this.handleChange} onSetValue={this.setValue} onChangeOption={this.handleChangeOption} value={this.state.value} />
       idowner = this.state.freelancerId;
     }
     return (
@@ -96,7 +164,7 @@ export class TaskPage extends React.Component {
         <h4>Task</h4>
         <div className="row mt-3">
           <div className="col">
-            <TaskDescription task={this.state.task} />
+            <TaskDescription task={this.state.task} value={this.state.advanceTask}/>
           </div>
         </div>
         <div className="row mt-3">

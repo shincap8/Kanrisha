@@ -1,9 +1,15 @@
 import React from 'react';
 import Anonymous from '../img/anonymous.png';
+import TaskAdvance from './TaskAdvance';
+import history from '../history';
 import { FreelancerProjects } from './FreelancerProjects';
 
 class FreelancerListItem extends React.Component {
   render() {
+    let advance = "";
+    if (history.location.pathname === "/TaskPage") {
+      advance = <p className="card-text" >Percentage completed: {<TaskAdvance taskId={history.location.state.taskId} type={this.props.tasktype} user="freelancer" id={this.props.freelancer._id}/>}%</p>
+    }
     return (
       <div>
         <div className="row">
@@ -17,7 +23,7 @@ class FreelancerListItem extends React.Component {
         </div>
         <div className="row">
           <div className="card-body ml-1">
-            <p className="card-text" >Percentage completed: {this.props.freelancer.advancedId}%</p>
+            {advance}
             <p className="card-text">Contact: {this.props.freelancer.email}</p>
             <p className="card-text">Projects:</p>
             <FreelancerProjects id={this.props.freelancer._id}/>
@@ -42,7 +48,7 @@ class FreelancersList extends React.Component {
               return (
                 <div className="col-6" key={freelancer._id}>
                   <div className="card mb-4">
-                    <FreelancerListItem freelancer={ freelancer } />
+                    <FreelancerListItem freelancer={ freelancer } tasktype={this.props.tasktype}/>
                   </div>
                 </div>
               );

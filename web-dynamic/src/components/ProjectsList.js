@@ -1,5 +1,6 @@
 import React from 'react';
 import history from '../history';
+import ProjectAdvance from './ProjectAdvance';
 
 
 class ProjectListItem extends React.Component {
@@ -23,7 +24,7 @@ class ProjectListItem extends React.Component {
     }
 
     if (history.location.state.user === "manager") {
-      advance = <p>Percentage completed {this.props.project.advanced}%</p>
+      advance = <p>Percentage completed {<ProjectAdvance projectId={this.props.project._id}/>}%</p>
     }
 
     return (

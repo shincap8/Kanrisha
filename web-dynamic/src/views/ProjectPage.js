@@ -32,12 +32,7 @@ export class ProjectPage extends React.Component {
     }
 
     this.handleOnClick = this.handleOnClick.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
     this.loadProject = this.loadProject.bind(this);
-  }
-
-  handleDelete() {
-    console.log(this.state.taskId);
   }
 
   componentDidMount(){
@@ -45,7 +40,6 @@ export class ProjectPage extends React.Component {
       this.loadProject();
     }
     if (this.state.user === 'manager') {
-
       const url1 = 'http://localhost:3001/project/tasks/' + history.location.state.projectId;
       axios.get(
         url1
@@ -54,15 +48,15 @@ export class ProjectPage extends React.Component {
         }).catch(error => {
           console.log("registration error", error);
         });
-        const url2 = 'http://localhost:3001/project/freelancers/' + history.location.state.projectId;
-        axios.get(
-          url2
-          ).then(response => {
-            this.setState({ freelancers: response.data })
-          }).catch(error => {
-            console.log(error.data);
-            console.log("Error", error);
-          });
+      const url2 = 'http://localhost:3001/project/freelancers/' + history.location.state.projectId;
+      axios.get(
+        url2
+        ).then(response => {
+          this.setState({ freelancers: response.data })
+        }).catch(error => {
+          console.log(error.data);
+          console.log("Error", error);
+        });
     } else {
       const url1 = 'http://localhost:3001/task/' + history.location.state.projectId + '/' + history.location.state.freelancerId;
       axios.get(
@@ -76,10 +70,10 @@ export class ProjectPage extends React.Component {
     }
   }
 
-  loadProject () {
-    const url3 = 'http://localhost:3001/project/' + history.location.state.projectId;
-    axios.get(
-      url3
+  async loadProject () {
+    const url1 = 'http://localhost:3001/project/' + history.location.state.projectId;
+    await axios.get(
+      url1
     ).then(response => {
       this.setState({ project: response.data })
     }).catch(error => {
@@ -90,13 +84,9 @@ export class ProjectPage extends React.Component {
   async handleOnClick(e) {
     e.preventDefault();
     const key = e.currentTarget.dataset.key;
-    const value = e.target.value;
-    await this.setState({ taskId: key });
-    if (value === 'delete') {
-      this.handleDelete();
-    } else {
-      history.push('/TaskPage', this.state);
-    }
+    const id = e.currentTarget.dataset.id
+    await this.setState({ taskId: key, taskType: id});
+    history.push('/TaskPage', this.state);
   }
 
   render() {

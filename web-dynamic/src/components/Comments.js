@@ -16,16 +16,13 @@ export class Comments extends React.Component {
 
     componentDidMount () {
       this.getComments();
-      console.log(this.state.comments);
     }
 
     async getComments () {
       const url = 'http://localhost:3001/comments-task/' + history.location.state.taskId;
-      console.log(url);
       await axios.get(
         url
         ).then(response => {
-            console.log(response.data);
           this.setState({ comments: response.data })
         }).catch(error => {
           console.log(error.data);
