@@ -11,8 +11,7 @@ router.get('/project-advance/:id', async (req, res) => {
   for (let i = 0; i < project.advancedIds.length; i++) {
     const advance = await Advance.findById(project.advancedIds[i]);
     if (advance) {
-      console.log(advance);
-      totaladvance = totaladvance + advance.toprojectadvanced;
+      totaladvance = (totaladvance + advance.toprojectadvanced).toFixed(2);
     }
   }
   res.send(String(totaladvance));
@@ -33,7 +32,7 @@ router.get('/task-advance/:id', async (req, res) => {
         totaladvance = totaladvance + (advanced.localadvanced * individualweight);
       }
     }
-    const weightedadvance = (totaladvance * 100) / task.weight;
+    const weightedadvance = ((totaladvance * 100) / task.weight).toFixed(2);
     res.send(String(weightedadvance));
   }
   if (task.tasktype === 2) {
@@ -42,8 +41,8 @@ router.get('/task-advance/:id', async (req, res) => {
     const store = [];
     for (let i = 0; i < task.advancesId.length; i++) {
       const advance = await Advance.findById(task.advancesId[i]);
-      totaladvance = totaladvance + advance.toprojectadvanced;
-      totalamount = totalamount + advance.localamount;
+      totaladvance = (totaladvance + advance.localadvanced).toFixed(2);
+      totalamount = (totalamount + advance.localamount).toFixed(2);
     }
     store.push(totaladvance);
     store.push(totalamount);
@@ -88,7 +87,6 @@ router.put('/modifyadvance', async (req, res) => {
           const totalgoal = task.amount / task.freelancersId.length;
           advance.localadvanced = (value * 100) / totalgoal;
           const partialweight = (task.weight / task.freelancersId.length) / 100;
-          // advance.toprojectadvanced = advance.localadvanced * partialweight * (task.weight / 100);
           advance.toprojectadvanced = advance.localadvanced * partialweight;
           advance.save();
         }

@@ -114,7 +114,11 @@ router.get('/project/tasks/:id', async (req, res) => {
 
 router.put('/changestatus/:id', async (req, res) => {
   const project = await Project.findById(req.params.id);
-  project.status = false;
+  if (project.status === true) {
+    project.status = false;
+  } else {
+    project.status = true;
+  }
   project.save();
   res.send(true);
 });

@@ -30,7 +30,6 @@ router.post('/new-task', async (req, res) => {
     deadline
   });
   await newTask.save();
-  console.log(newTask);
   const project = await Project.findById(projectId);
   project.tasksId.push(newTask._id);
   project.save();

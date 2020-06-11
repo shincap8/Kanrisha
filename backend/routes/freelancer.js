@@ -46,7 +46,6 @@ router.post('/signIn/freelancer', async (req, res) => {
 
 router.get('/all-freelancers', async (req, res) => {
   const freelancer = await Freelancer.find();
-  console.log(freelancer);
   res.send(freelancer);
 });
 
@@ -54,7 +53,6 @@ router.get('/all-freelancers/:taskId', async (req, res) => {
   const task = await Task.findById(req.params.taskId);
   if (task) {
     const freelancer = await Freelancer.find();
-    console.log(freelancer[0]._id);
     const store = [];
     for (let i = 0; i < freelancer.length; i++) {
       if (!(task.freelancersId.includes(freelancer[i]._id))) {
