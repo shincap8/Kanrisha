@@ -6,19 +6,18 @@ import Logo from '../img/Logo.png';
 export class NotFound extends React.Component {
     render() {
         return (
-            <div className="container">
-                    <div className="col-md-6 content">
-                        <div className="text">
-                            <p>OOPS! </p>
-                            <p>We Couldn't Find That Page</p>
+            <div className="container PageContainer">
+                    <div className="col-md-6 Pagecontent">
+                        <div className="Pagetext">
+                            <p className="description">OOPS! </p>
+                            <p className="description">We Couldn't Find That Page</p>
                         </div>
                         <div>
-                            <img className="imagen col-md-12 mt-2 ml-3" src={ error } alt="pc" />
+                            <img className="ComputerError col-md-12 mt-2 ml-3" src={ error } alt="pc" />
                         </div>
-                        <div className="text">
-                            <p>Go Home:</p>
+                        <div>
                             <a href="http://localhost:3000">
-                                <img className="logo" src={ Logo } alt="link" />
+                                <img className="LogoImage" src={ Logo } alt="KanrishaHome" />
                             </a>
                         </div>
                     </div>
