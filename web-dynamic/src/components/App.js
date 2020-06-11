@@ -9,12 +9,14 @@ import { ProjectPage } from '../views/ProjectPage';
 import {NewTask} from '../views/NewTask';
 import {TaskPage} from '../views/TaskPage';
 import {AllProjects} from '../views/AllProjects';
+import { NotFound } from '../views/Page404';
 
 function App() {
   return (
     <Router history={history}>
       <Switch>
         <Route exact path="/" component={Login} />
+        <Route exact path="/NotFound" component={NotFound} />
         <Layout>
           <Route exact path="/Home" component={Home} />
           <Route exact path="/AllProjects" component={AllProjects} />

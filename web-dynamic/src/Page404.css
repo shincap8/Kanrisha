@@ -1,35 +1,35 @@
-div .container {
+.PageContainer {
     display: flex;
     justify-content: center;
     background-color: #ffffff;
 
 }
 
-div .content {
+.Pagecontent {
     color: #005670;
     font-family: cursive;
     font-size: 20px;
     line-height: 50px;
 }
 
-div .imagen {
+.ComputerError {
     padding: 3px;
     margin: 3px 3px;
 }
 
-div .text {
+.Pagetext {
     justify-content: center;
     margin: 1px;
     padding: 0px;
     text-align: center;
 }
 
-p {
+p .description {
     margin: 0px;
     padding: 0px;
 }
 
-div .logo {
+.LogoImage {
     width: 110px;
     display: block;
     margin-left: auto;
