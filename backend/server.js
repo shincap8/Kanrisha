@@ -6,7 +6,6 @@ const session = require('express-session');
 
 // initializations
 const app = express();
-require('./config/passport');
 
 // settings
 app.set('port', process.env.PORT || 3001);
