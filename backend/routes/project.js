@@ -39,7 +39,9 @@ router.get('/project/freelancer/:freelancerid', async (req, res) => {
   if (freelancer) {
     for (let i = 0; i < freelancer.projectsId.length; i++) {
       const project = await Project.findById(freelancer.projectsId[i]);
-      store.push(project);
+      if (project) {
+        store.push(project);
+      }
     }
     res.send(store);
   } else {
