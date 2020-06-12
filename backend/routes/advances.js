@@ -14,7 +14,7 @@ router.get('/project-advance/:id', async (req, res) => {
       totaladvance = (totaladvance + advance.toprojectadvanced);
     }
   }
-  res.send(String(totaladvance));
+  res.send(String(totaladvance.toFixed(2)));
 });
 
 router.get('/task-advance/:id', async (req, res) => {
@@ -33,7 +33,7 @@ router.get('/task-advance/:id', async (req, res) => {
       }
     }
     const weightedadvance = ((totaladvance * 100) / task.weight);
-    res.send(String(weightedadvance));
+    res.send(String(weightedadvance.toFixed(2)));
   }
   if (task.tasktype === 2) {
     let totaladvance = 0;
@@ -45,7 +45,7 @@ router.get('/task-advance/:id', async (req, res) => {
       totalamount = (totalamount + advance.localamount);
     }
     totaladvance = totaladvance / task.freelancersId.length;
-    store.push(totaladvance);
+    store.push(totaladvance.toFixed(2));
     store.push(totalamount);
     res.send(store);
   }
