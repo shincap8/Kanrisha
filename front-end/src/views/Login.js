@@ -36,8 +36,8 @@ export class Login extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-6 mt-5 mx-auto">
-            <img src={Logo} alt="Logo" className="img-fluid"/>
+          <div className="col-md-6 mt-4 mx-auto">
+            <img src={Logo} alt="Logo" className="img-fluid main-logo"/>
             <h3 className="text-center mt-3">Personnel Manager</h3>
             <button className="btn btn-info col-6 mt-4 offset-3" data-toggle="Button" value="Manager" onClick={this.handleOnClick}>Project Manager</button>
             <button className="btn btn-info col-6 mt-2 offset-3" data-toggle="Button" value="Freelancer" onClick={this.handleOnClick}>Freelancer</button>

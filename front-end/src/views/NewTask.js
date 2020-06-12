@@ -80,8 +80,8 @@ export class NewTask extends React.Component {
 
   render () {
     return (
-      <div className="col-md-6 offset-md-3">
-        <h2 className="text-center mt-3">New Task</h2>
+      <div className="col-md-6 offset-md-3 mt-5">
+        <h2 className="text-center">New Task</h2>
 
         <TaskForm onChange={this.handleChange} onSubmit={this.handleSubmit} task={this.state.task} onChangeDate={this.handleDate} onChangeOption={this.handleChangeOption}/>
       </div>

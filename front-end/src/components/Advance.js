@@ -18,11 +18,11 @@ export class Advanced extends React.Component {
     if (this.props.type === 0) {
       type_render = <div className="">
                       <label className="col-md-4">
-                        <input type="checkbox"
-                        name="value"
-                        onChange={this.props.onChangeOption} />
                         Done
                       </label>
+                      <input type="checkbox"
+                        name="value"
+                        onChange={this.props.onChangeOption} />
                     </div>
     } else if (this.props.type === 2) {
       type_render =  <div className="form-group">
@@ -40,7 +40,7 @@ export class Advanced extends React.Component {
                         </div>
                       </div>
     } else {
-      type_render = <div className="form-group">
+      type_render = <div className="form-group slider">
                     <label className="mr-2 font-weight-bold">Update</label>
                     <div className="col-8 md-4">
                       <RangeSlider
@@ -59,7 +59,7 @@ export class Advanced extends React.Component {
             {type_render}
           </div>
 
-          <button type="submit" onClick={this.props.onSubmit} className="btn btn-primary" >
+          <button type="submit" onClick={this.props.onSubmit} className="btn btn-info" >
             Save
           </button>
         </form>

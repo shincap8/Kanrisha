@@ -33,7 +33,7 @@ export class TaskForm extends React.Component {
         </div>
 
         <div className="form-group ">
-          <label>Deadline</label>
+          <label className="deadline">Deadline</label>
           <DatePicker
             onChange={this.props.onChangeDate}
             className="form-control"
@@ -78,8 +78,8 @@ export class TaskForm extends React.Component {
           </div>
         </div>
 
-        <div className="form-group">
-          <label>The weight of this task in the project is: <br/></label>
+        <div className="form-group row">
+          <label className="deadline">The weight of this task in the project is: <br/></label>
           <div>
             <input
             type="number"
@@ -93,8 +93,8 @@ export class TaskForm extends React.Component {
           </div>
         </div>
 
-        <div className="form-group">
-          <label>If you choose amount please fill in the Goal <br/></label>
+        <div className="form-group row">
+          <label className="deadline">If you choose amount please fill in the Goal <br/></label>
           <div>
             <input
             disabled={(this.props.task.tasktype === "2") ? "" : "disabled" }
@@ -107,7 +107,7 @@ export class TaskForm extends React.Component {
           </div>
         </div>
 
-        <button type="submit" onClick={this.props.onSubmit} className="btn btn-info btn-block col-8 offset-2 mb-2" >
+        <button type="submit" onClick={this.props.onSubmit} className="btn btn-info btn-block col-8 offset-2 mb-4" >
           Save
         </button>
       </form>

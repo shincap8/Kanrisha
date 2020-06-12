@@ -58,6 +58,7 @@ class ProjectDescription extends React.Component {
     let NewTaskbtn = "";
     let advance = "";
     let changeStsbtn = "";
+    let cls = "row description mb3";
 
     if (history.location.state.user === "manager") {
       changeStsbtn = <ChangeStatus status={this.props.project.status} id={this.props.project._id} load={this.props.load}/>
@@ -68,8 +69,11 @@ class ProjectDescription extends React.Component {
     if (history.location.state.user === "manager") {
     advance = <h3><ProjectAdvance projectId={this.props.project._id}/>%</h3>;
     }
+    if (history.location.pathname === "/TaskPage") {
+      cls = "row";
+    }
     return (
-        <div className="row">
+        <div className={cls}>
           <div className="col-10">
             <div className="row">
             <div className="col-4">

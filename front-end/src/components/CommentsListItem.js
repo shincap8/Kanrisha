@@ -4,12 +4,8 @@ import CommentUser from './CommentUser';
 
 export class CommentsListItem extends React.Component {
     render() {
-      let cls = "col-12 mt-2 align-self-start";
-      if (this.props.idowner === this.props.comment.idowner) {
-        cls = "col-12 align-self-end mt-2"
-      }
       return (
-          <div className={cls}>
+          <div className="col-12 comment-item">
                   <div className="row md-12">
                       <img className="card-img-top col-md-2 mt-2 ml-3" src={ Anonymous } alt="User" />
                       <div className="col-md-6 mt-4">

@@ -13,10 +13,10 @@ class FreelancerListItem extends React.Component {
     return (
       <div>
         <div className="row">
-          <div className="col-md-4 px-auto">
-            <img className="card-img mt-2 mx-auto ml-5" src={Anonymous} alt="User" />
+          <div className="col-md-4 img-free">
+            <img className="card-img mt-2" src={Anonymous} alt="User" />
           </div>
-          <div className="col-md-8 mt-2">
+          <div className="col-md-7 mt-2">
             <h4 className="card-title">{this.props.freelancer.name}</h4>
             <p className="card-text">{this.props.freelancer.profession}</p>
           </div>
@@ -26,7 +26,7 @@ class FreelancerListItem extends React.Component {
             {advance}
             <p className="card-text">Contact: {this.props.freelancer.email}</p>
             <p className="card-text">Projects:</p>
-            <FreelancerProjects id={this.props.freelancer._id}/>
+            <FreelancerProjects id={this.props.freelancer._id} className="freelancer"/>
             {/*<button className="btn btn-primary mt-1 ml-4 mb-2">Delete</button>*/}
           </div>
         </div>

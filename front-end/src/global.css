@@ -1,0 +1,115 @@
+.btn-info {
+    color:white;
+    background-color: #005670;
+    border-color: #005670;
+}
+
+.navbar {
+    background-color: #005670;
+}
+
+.navbar h3 {
+    color: white;
+}
+
+.nav li {
+    color: white;
+}
+
+.nav-link:hover {
+    text-decoration: none;
+    border-radius: 3px;
+    background-color: rgba(0, 164, 153, 0.2);
+}
+
+.card.project, .card.task {
+    background-color: #005670;
+}
+
+.p-card-title {
+    max-height: 2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.p-description, .t-description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card.project:hover, .card.task:hover {
+    background-color: rgba(0, 164, 153, 0.8);
+    cursor: pointer;
+}
+
+.deadline {
+    margin-right: 1.5rem;
+}
+
+label {
+    margin-bottom: 1rem;
+}
+
+.img-free {
+    display:block;
+    margin:auto;
+}
+
+.form-group.row{
+    margin-left: 0rem;
+}
+
+.description {
+    border-bottom: 1.5px solid #005670;
+}
+
+.chat {
+    margin-left: 1.5rem;
+    border: 1.5px solid #005670;
+    padding-left: 0;
+    padding-top: 0.8rem;
+}
+
+.comment-item {
+    padding-left: 0;
+}
+
+.f-projects {
+  height: 8rem;
+  overflow: auto;
+}
+
+.advance {
+    background: #005670;
+    border-radius: 50%;
+}
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #A7A8AA;
+  outline: 1px solid slategrey;
+}
+
+.freelancer::-webkit-scrollbar {
+    width: 1rem;
+}
+
+.freelancer::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.freelancer::-webkit-scrollbar-thumb {
+  background-color: #A7A8AA;
+  outline: 1px solid slategrey;
+}
+
+

@@ -79,7 +79,7 @@ export class CommentsForm extends React.Component {
                         />
                     </div>
 
-                    <button type="submit" onClick={this.handleSubmit} className="btn btn-primary btn-block" >
+                    <button type="submit" onClick={this.handleSubmit} className="btn btn-info btn-block" >
                         Comment
                     </button>
                 </form>

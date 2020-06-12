@@ -28,7 +28,7 @@ export class FreelancerProjects extends React.Component {
 
   render () {
     return (
-      <ul>
+      <ul className="f-projects">
         {this.state.data.map(project => {
           return (
             <li key={this.props.id + project._id}>

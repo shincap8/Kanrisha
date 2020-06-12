@@ -109,7 +109,7 @@ export class ProjectPage extends React.Component {
             <ProjectDescription project={this.state.project} newstate={this.state} load={this.loadProject}/>
           </div>
         </div>
-        <div className="row">
+        <div className="row mt-4">
           {freelancer_list}
           <div className={classN}>
             <h5 className="mb-4">Tasks</h5>

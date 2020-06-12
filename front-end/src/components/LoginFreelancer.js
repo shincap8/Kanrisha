@@ -50,7 +50,7 @@ class LoginFreelancer extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-md-6 mt-3 mx-auto">
+        <div className="col-md-6 mt-3 mx-auto mb-3">
           <form noValidate onSubmit={this.onSubmit}>
             <div className="form-group">
               <label htmlFor="email">Freelancer user:</label>

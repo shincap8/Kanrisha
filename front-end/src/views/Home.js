@@ -53,7 +53,7 @@ export class Home extends React.Component {
     console.log()
     return (
       <React.Fragment>
-        <div className="container mt-4">
+        <div className="container mt-5">
           <ProjectsList projects={this.state.projects} onClick={this.handleOnClick}/>
         </div>
       </React.Fragment>

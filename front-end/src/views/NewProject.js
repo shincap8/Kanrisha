@@ -70,7 +70,7 @@ export class NewProject extends React.Component {
 
   render () {
     return (
-      <div className="col-md-6 offset-md-3">
+      <div className="col-md-6 offset-md-3 mt-5">
         <h2 className="text-center">New Project</h2>
 
         <ProjectForm onChange={this.handleChange} onSubmit={this.handleSubmit} project={this.state.project} onChangeDate={this.handleDate}/>

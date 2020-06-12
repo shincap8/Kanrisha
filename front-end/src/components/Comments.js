@@ -34,13 +34,13 @@ export class Comments extends React.Component {
         return (
           <div className="CommentsList">
             <div className="row">
+              <div className="col-11 chat">
                 {this.state.comments.map(comment => {
                   return (
-                    <div className="col-md-11" key={comment._id}>
-                      <CommentsListItem comment={comment} idowner={this.props.idowner}/>
-                    </div>
+                    <CommentsListItem comment={comment} idowner={this.props.idowner}/>
                 );
               })}
+              </div>
             </div>
             <CommentsForm idowner={this.props.idowner} commentsList={this.getComments.bind()}/>
           </div>

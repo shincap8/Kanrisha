@@ -28,12 +28,12 @@ class ProjectListItem extends React.Component {
     }
 
     return (
-      <div className="card text-white bg-info" >
+      <div className="card project text-white" >
         <div className="card-header">
-          <h3>{ this.props.project.name }</h3>
+          <h4 className="p-card-title">{ this.props.project.name }</h4>
         </div>
         <div className="card-body">
-          <p className="card-text">{ this.props.project.description}</p>
+          <p className="card-text p-description">{ this.props.project.description}</p>
           <p className="card-text">{this.props.project.deadline}</p>
           {all}
           {advance}

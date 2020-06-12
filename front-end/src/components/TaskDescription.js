@@ -4,7 +4,7 @@ import TaskAdvance from './TaskAdvance';
 class TaskDescription extends React.Component {
   render() {
     return (
-      <div className="row">
+      <div className="row description">
         <div className="col-10">
           <div className="row">
             <div className="col-4">

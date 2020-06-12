@@ -13,14 +13,14 @@ export class NavBar extends React.Component {
                   </Link>
     }
     return (
-      <nav className="navbar navbar-light bg-light">
+      <nav className="navbar">
         <Link to="/">
           <img className="navbar-brand d-inline-block align-top" width ="330" height="112"src={logo} alt="Kanrisha Logo" />
         </Link>
         <h3 className="text-left">Personnel Manager</h3>
         <ul className="nav justify-content-end">
           <Link to={{pathname: "/Home", state: history.location.state }}>
-            <li className="nav-item nav-link" value="Active Projects" data-toggle="dropdown">Active Projects</li>
+            <li className="nav-link" value="Active Projects" data-toggle="dropdown">Active Projects</li>
           </Link>
           <Link to={{ pathname: "/AllProjects", state: history.location.state}}>
             <li className="nav-item nav-link" value="All Projects" data-toggle="dropdown">All Projects</li>
