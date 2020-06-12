@@ -40,6 +40,8 @@ Enter the frontend directory and type the following command:
 ```
 $ npm run start
 ```
+### Browser
+Make sure that the browser you use is Google Chrome.
 
 ## Technologies
 ### JavaScript
