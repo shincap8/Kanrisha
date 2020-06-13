@@ -33,7 +33,7 @@ class ChangeStatus extends React.Component {
     e.preventDefault();
 
     axios.put(
-      'http://localhost:3001/changestatus/' + this.props.id
+      'http://localhost:3001/changestatus/' + history.location.state.projectId
       ).then(response => {
         console.log(response);
       }).catch(error => {

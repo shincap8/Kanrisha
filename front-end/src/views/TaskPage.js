@@ -50,6 +50,7 @@ export class TaskPage extends React.Component {
     this.handleChangeOption = this.handleChangeOption.bind(this);
     this.setValue = this.setValue.bind(this);
     this.getadvanceF = this.getAdvanceF.bind(this);
+    this.loadProject = this.loadProject.bind(this);
   }
   
   componentDidMount () {
@@ -87,6 +88,17 @@ export class TaskPage extends React.Component {
     }).catch(error => {
       console.log("error", error);
     })
+  }
+
+  async loadProject() {
+    const url1 = 'http://localhost:3001/project/' + history.location.state.projectId;
+    await axios.get(
+      url1
+    ).then(response => {
+      this.setState({ project: response.data })
+    }).catch(error => {
+      console.log("registration error", error);
+    });
   }
 
   async handleSubmit (e) {
@@ -134,6 +146,7 @@ export class TaskPage extends React.Component {
   };
 
   render() {
+    const active = this.state.project.status;
     const user = this.state.user;
     let freelancer_list = "";
     let add_freelancer = "";
@@ -145,9 +158,11 @@ export class TaskPage extends React.Component {
                           <h5 className="mb-4">Freelancers</h5>
                           <FreelancersList freelancers={this.state.freelancers} tasktype={this.state.tasktype}/>
                         </div>;
-      add_freelancer = <div className="col-2">
-        <AddFreelancers taskId={this.state.taskId} projectId={this.state.projectId} refresh={this.getFreelancers}/>
-                      </div>;
+      if (active === true) {
+        add_freelancer = <div className="col-2">
+                          <AddFreelancers taskId={this.state.taskId} projectId={this.state.projectId} refresh={this.getFreelancers}/>
+                        </div>;
+      }
       idowner = this.state.managerId;
     } else {
       advance = <Advance type={this.state.task.tasktype} onSubmit={this.handleSubmit} onChange={this.handleChange} onSetValue={this.setValue} onChangeOption={this.handleChangeOption} value={this.state.value} />
@@ -157,7 +172,7 @@ export class TaskPage extends React.Component {
       <div className="container">
         <div className="row mt-3 description mb-3">
           <div className="col-10">
-            <ProjectDescription project={this.state.project} newstate={this.state}/>
+            <ProjectDescription project={this.state.project} newstate={this.state} load={this.loadProject}/>
           </div>
           {add_freelancer}
         </div>
