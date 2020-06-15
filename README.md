@@ -43,6 +43,39 @@ $ npm run start
 ### Browser
 Make sure that the browser you use is Google Chrome.
 
+## Consider
+For the use of the platform we assume that the database is already created.  
+For this reason, before interacting with the platform and with the 3001 server of the backend on, you must create the manager and freelancer users as follows:  
+Use an app to test a REST API like Postman or Insomnia.
+
+### Manager
+To create a manager you need to make a POST request to the route:
+```
+http://localhost:3001/signUp/manager
+```
+#### Example
+```
+{
+	"name": "managerName",
+	"email": "managerEmail@gmail.com",
+	"password": "password"
+}
+```
+### Freelancer
+To create a freelancer you need to make a POST request to the route:
+```
+http://localhost:3001/signUp/freelancer
+```
+#### Example
+```
+{
+	"name": "freelancerName",
+	"email": "freelancerEmail@gmail.com",
+	"password": "password",
+	"profession": "FreelancerProfession"
+}
+```
+
 ## Technologies
 ### JavaScript
 
