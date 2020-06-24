@@ -114,7 +114,7 @@ http://localhost:3001/signUp/freelancer
 ## Technologies
 ### JavaScript
 
-Javascript is among the most powerful and flexible programming languages of the web. It powers the dynamic behavior on most websites.
+JavaScript is among the most powerful and flexible programming languages of the web. It powers the dynamic behavior on most websites.
 MongoDB is a document database, which means it stores data in JSON-like documents.
 ### NodeJs
 The powerful Node.js runtime environment has been ranked the technology most commonly used by professional developers. Node.js is an event-driven JavaScript runtime. Node has myriad potential uses for JavaScript development including being a great environment for building efficient network applications.
@@ -122,6 +122,10 @@ The powerful Node.js runtime environment has been ranked the technology most com
 npm is a package manager for the JavaScript programming language. It is the default package manager for the JavaScript runtime environment Node.js.
 ### ReactJs
 ReactJS presents graceful solutions to some of front-end programming’s most persistent issues. It’s fast, scalable, flexible, powerful, and has a robust developer community that’s rapidly growing.
+### Express
+Express will help you build APIs in JavaScript and implement the CRUD (create, retrieve, update, and delete) functionality which forms the backbone of modern-day apps.
+### MongoDB
+MongoDB is a document database, which means it stores data in JSON-like documents.
 
 ## Developed with
 - npm: 6.14.5
