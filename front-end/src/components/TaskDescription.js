@@ -1,3 +1,6 @@
+/*
+This code below is for displaying the information about a task
+*/
 import React from 'react';
 import TaskAdvance from './TaskAdvance';
 

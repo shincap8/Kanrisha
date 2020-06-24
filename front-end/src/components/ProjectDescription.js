@@ -1,3 +1,6 @@
+/*
+This code below is for displaying the information about a project
+*/
 import React from 'react';
 import history from '../history';
 import axios from 'axios';
