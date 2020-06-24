@@ -126,8 +126,18 @@ ReactJS presents graceful solutions to some of front-end programming’s most pe
 ## Developed with
 - npm: 6.14.5
 - node: v14.2.0
+- mongodb: 4.2.6
+
+## Learnings about Kanrisha
+If you want to know more about the learning we had with this project, visit our blogs at the following links:
+```
+https://www.linkedin.com/pulse/learnings-kanrisha-my-final-project-holberton-school-zuluaga-g%25C3%25B3mez/?trackingId=bXhVMBzMQS%2Blxzikw%2FqpVQ%3D%3D
+```
+```
+https://www.linkedin.com/pulse/kanrisha-my-final-project-holbert-school-paula-fuentes/?trackingId=kpbHfsHLSliyUFkAkSAUVg%3D%3D
+```
 
 ## Authors
-- Paula Fuentes [Github](https://github.com/pafuentess)
-- Sara Hincapie [Github](https://github.com/shincap8)
-- Yulieth Zuluaga [Github](https://github.com/yulyzulu)
+- Paula Fuentes [Github](https://github.com/pafuentess) [LinkedIn](https://www.linkedin.com/in/paula-fuentes-5a1473192/)
+- Sara Hincapie [Github](https://github.com/shincap8) [LinkedIn](https://www.linkedin.com/in/sara-hincapi%C3%A9-monsalve-180063107/)
+- Yulieth Zuluaga [Github](https://github.com/yulyzulu) [LinkedIn](https://www.linkedin.com/in/yulieth-zuluaga-g%C3%B3mez-b97145122/)
