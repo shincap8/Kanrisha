@@ -1,3 +1,8 @@
+/*
+This code below is the home view where the manager or freelancer 
+can see all the active projects realted to them here we
+use the ProjecstList class
+*/
 import React from 'react';
 import axios from 'axios';
 import history from '../history';
@@ -23,7 +28,6 @@ export class Home extends React.Component {
       axios.get(
         url
       ).then(response => {
-        console.log(response.data)
         this.setState({ projects: response.data })
       }).catch(error => {
         console.log("registration error", error);
@@ -50,7 +54,6 @@ export class Home extends React.Component {
 
 
   render() {
-    console.log()
     return (
       <React.Fragment>
         <div className="container mt-5">

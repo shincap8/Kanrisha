@@ -1,3 +1,8 @@
+/*
+This code below is the view for all the projects of the
+manager or freelancer stored here we use the
+ProjectsList class
+*/
 import React from 'react';
 import axios from 'axios';
 import history from '../history';

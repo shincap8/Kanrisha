@@ -1,3 +1,8 @@
+/*
+This code below is the New Task view where the manager
+can create a new task we use the TaskForm class
+to collect the information of the new task and send it to the api
+*/
 import React from 'react';
 import history from '../history';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -33,7 +38,6 @@ export class NewTask extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleChangeOption = this.handleChangeOption.bind(this);
-    console.log(history);
   }
 
   handleChange(e) {
@@ -75,7 +79,6 @@ export class NewTask extends React.Component {
 
   handleChangeOption = event => {
     this.setState({ task: { ...this.state.task, tasktype: event.target.value},});
-    console.log(event.target.value);
   };
 
   render () {

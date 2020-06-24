@@ -1,3 +1,9 @@
+/*
+This code below is the Project view where the manager or freelancer
+can see all the info and the tasks related to the project clicked
+along with the current freelancer assigned to it (if you are a manager)
+we use three classes here TasksList, FreelancersList and ProjectDescription
+*/
 import React from 'react';
 import axios from 'axios';
 import history from '../history';
@@ -54,7 +60,6 @@ export class ProjectPage extends React.Component {
         ).then(response => {
           this.setState({ freelancers: response.data })
         }).catch(error => {
-          console.log(error.data);
           console.log("Error", error);
         });
     } else {
@@ -62,7 +67,6 @@ export class ProjectPage extends React.Component {
       axios.get(
         url1
       ).then(response => {
-        console.log(response.data)
         this.setState({ data: response.data })
       }).catch(error => {
         console.log("registration error", error);

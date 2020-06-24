@@ -1,3 +1,8 @@
+/*
+This code below is the New Project view where the manager 
+can create a new project we use the ProjectForm class
+to collect the information of the new project and send it to the api
+*/
 import React from 'react';
 import history from '../history';
 import axios from 'axios';
@@ -39,7 +44,6 @@ export class NewProject extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault();
-    console.log(this.state.project)
     const { name, description, deadline, tasksId, managerId, freelancersId, status, advanced } = this.state.project;
     axios.post(
       'http://localhost:3001/new-project',
@@ -54,14 +58,10 @@ export class NewProject extends React.Component {
         advanced: advanced
       }).then(response => {
         this.setState({ projectId: response.data});
-        console.log(history.location.state)
         history.push('/ProjectPage', this.state);
       }).catch(error => {
         console.log("error" + error);
       })
-    // this.props.onAddProject(this.state);
-    // console.log('Form was submitted');
-    // console.log(this.state);
   };
 
   handleDate = deadline => {

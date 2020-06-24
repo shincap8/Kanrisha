@@ -1,3 +1,8 @@
+/*
+This code below is the login view where user can choose
+between login as a manager or a freelancer this call two
+classes LoginManager and LoginFreelancer
+*/
 import React from 'react';
 import LoginManager from '../components/LoginManager';
 import Logo from '../img/Logo.png';

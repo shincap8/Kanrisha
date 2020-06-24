@@ -1,3 +1,12 @@
+/*
+This code below is the Task view where the manager or freelancer
+can see all the info related to the task clicked
+both freelaner and manager can read and create new comments
+the manager can add freelancers to it and the freelancer
+can update its task we use 6 classes here
+FreelancersList, ProjectDescription, TaskDescription,
+AddFreelancers, Comments and Advance
+*/
 import React from 'react';
 import history from '../history';
 import axios from 'axios';
@@ -115,9 +124,7 @@ export class TaskPage extends React.Component {
       }).catch(error => {
         console.log("error" + error);
       })
-    console.log(value);
     this.getAdvanceF();
-    console.log(this.state.advanceTask)
   };
 
   setValue(e) {
@@ -131,18 +138,14 @@ export class TaskPage extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-    console.log(this.state.value);
   }
 
   handleChangeOption = (event) => {
     if (event.target.checked) {
-      console.log('Entra');
       this.setState({
         value: 100,
       })
     };
-    console.log(event.target.value);
-    console.log(this.state.value);
   };
 
   render() {
