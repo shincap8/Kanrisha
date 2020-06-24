@@ -1,3 +1,7 @@
+/*
+The code below returns the style of a comment in a list
+*/
+
 import React from 'react';
 import Anonymous from '../img/anonymous.png';
 import CommentUser from './CommentUser';

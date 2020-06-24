@@ -1,3 +1,8 @@
+/*
+The code below receives the projectId as a parameter.
+Returns the percentage of progress of the project.
+*/
+
 import React from 'react';
 import axios from 'axios';
 import history from '../history';

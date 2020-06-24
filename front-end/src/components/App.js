@@ -1,3 +1,7 @@
+/*
+The code below returns all the routes established in the browser
+*/
+
 import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import history from '../history';

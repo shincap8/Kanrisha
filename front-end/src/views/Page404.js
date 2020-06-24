@@ -1,3 +1,7 @@
+/*
+The code below returns a page with 404 error.
+*/
+
 import React from 'react';
 import '../Page404.css';
 import error from '../img/error.png';

@@ -1,3 +1,11 @@
+/*
+The code below has 2 classes.
+@ProjectListItem Receives as parameter the data of a project of a manager.
+Returns the style of a manager's project in a list.
+@ProjectsList Receives project data from a manager.
+Return the list of a manager's projects
+*/
+
 import React from 'react';
 import history from '../history';
 import ProjectAdvance from './ProjectAdvance';

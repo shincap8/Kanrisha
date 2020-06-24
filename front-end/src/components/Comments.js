@@ -1,3 +1,8 @@
+/*
+The code below will receive the comments stored in the backend by parameter.
+Returns a form to create comments and the list of comments.
+*/
+
 import React from 'react';
 import { CommentsListItem } from './CommentsListItem';
 import axios from 'axios';
