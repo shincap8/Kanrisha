@@ -5,6 +5,9 @@ const Manager = require('../models/manager');
 const Freelancer = require('../models/freelancer');
 const Task = require('../models/task');
 
+/**
+ * create a new project in the database
+ */
 router.post('/new-project', async (req, res) => {
   const {
     managerId,
@@ -33,6 +36,9 @@ router.post('/new-project', async (req, res) => {
   res.send(newProject._id);
 });
 
+/**
+ * return all projects that a freelancer are worked in
+ */
 router.get('/project/freelancer/:freelancerid', async (req, res) => {
   const freelancer = await Freelancer.findById(req.params.freelancerid);
   const store = [];
@@ -49,6 +55,9 @@ router.get('/project/freelancer/:freelancerid', async (req, res) => {
   }
 });
 
+/**
+ * return a project by Id
+ */
 router.get('/project/:id', async (req, res) => {
   const project = await Project.findById(req.params.id);
   if (project) {
@@ -58,6 +67,9 @@ router.get('/project/:id', async (req, res) => {
   }
 });
 
+/**
+ * return only the active project by manager Id
+ */
 router.get('/active-project/:id', async (req, res) => {
   const manager = await Manager.findById(req.params.id);
   const store = [];
@@ -72,6 +84,9 @@ router.get('/active-project/:id', async (req, res) => {
   res.send(store);
 });
 
+/**
+ * return only the active project by freelancer Id
+ */
 router.get('/active-project/freelancer/:id', async (req, res) => {
   const freelancer = await Freelancer.findById(req.params.id);
   const store = [];
@@ -88,6 +103,9 @@ router.get('/active-project/freelancer/:id', async (req, res) => {
   }
 });
 
+/**
+ * return all freelancer that work in a project by Id
+ */
 router.get('/project/freelancers/:id', async (req, res) => {
   const projects = await Project.findById(req.params.id);
   const store = [];
@@ -98,6 +116,9 @@ router.get('/project/freelancers/:id', async (req, res) => {
   res.send(store);
 });
 
+/**
+ * return all tasks by project Id
+ */
 router.get('/project/tasks/:id', async (req, res) => {
   const project = await Project.findById(req.params.id);
   if (project) {
@@ -114,6 +135,9 @@ router.get('/project/tasks/:id', async (req, res) => {
   }
 });
 
+/**
+ * change the status of a project
+ */
 router.put('/changestatus/:id', async (req, res) => {
   const project = await Project.findById(req.params.id);
   if (project.status === true) {

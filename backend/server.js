@@ -4,6 +4,11 @@ const exphbs = require('express-handlebars');
 const passport = require('passport');
 const session = require('express-session');
 
+/**
+ * This file configure all the things
+ * that the needs to run propertly
+ */
+
 // initializations
 const app = express();
 
@@ -43,8 +48,6 @@ app.use(require('./routes/manager'));
 app.use(require('./routes/task'));
 app.use(require('./routes/freelancer'));
 app.use(require('./routes/advances'));
-
-// global variables
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));

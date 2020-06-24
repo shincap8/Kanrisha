@@ -6,6 +6,9 @@ const Freelancer = require('../models/freelancer');
 const Advance = require('../models/advance_measure');
 const Comment = require('../models/comments');
 
+/**
+ * create a new task in the database
+ */
 router.post('/new-task', async (req, res) => {
   const {
     name,
@@ -36,6 +39,9 @@ router.post('/new-task', async (req, res) => {
   res.send(newTask._id);
 });
 
+/**
+ * add freelancer to a task
+ */
 router.post('/tasks/addfreelancers', async (req, res) => {
   const {
     taskId,
@@ -83,6 +89,9 @@ router.post('/tasks/addfreelancers', async (req, res) => {
   res.send(true);
 });
 
+/**
+ * delete freelancer from a task
+ */
 router.post('/tasks/deletefreelancers', async (req, res) => {
   const {
     taskId,
@@ -97,6 +106,9 @@ router.post('/tasks/deletefreelancers', async (req, res) => {
   res.send(true);
 });
 
+/**
+ * create a new comment in the database
+ */
 router.post('/createcomment', async (req, res) => {
   const {
     title,
@@ -119,6 +131,9 @@ router.post('/createcomment', async (req, res) => {
   res.send(newComment);
 });
 
+/**
+ * return all comment from a task
+ */
 router.get('/comments-task/:id', async (req, res) => {
   const task = await Task.findById(req.params.id);
   const store = [];
@@ -129,6 +144,9 @@ router.get('/comments-task/:id', async (req, res) => {
   res.send(store);
 });
 
+/**
+ * return all freelancer that are working in a task by Id
+ */
 router.get('/task/freelancers/:id', async (req, res) => {
   const task = await Task.findById(req.params.id);
   const store = [];
@@ -139,6 +157,9 @@ router.get('/task/freelancers/:id', async (req, res) => {
   res.send(store);
 });
 
+/**
+ * return all task that a freelancer by Id have
+ */
 router.get('/task/:idproject/:idfreelancer', async (req, res) => {
   const store = [];
   const freelancer = await Freelancer.findById(req.params.idfreelancer);
@@ -155,6 +176,9 @@ router.get('/task/:idproject/:idfreelancer', async (req, res) => {
   }
 });
 
+/**
+ * return a task by Id
+ */
 router.get('/task/:id', async (req, res) => {
   const task = await Task.findById(req.params.id);
   if (task) {

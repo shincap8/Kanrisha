@@ -3,6 +3,9 @@ const router = express.Router();
 const Manager = require('../models/manager');
 const Project = require('../models/projects');
 
+/**
+ * create a new manager in the database
+ */
 router.post('/signUp/manager', async (req, res) => {
   const {
     name,
@@ -22,6 +25,9 @@ router.post('/signUp/manager', async (req, res) => {
   res.send(true);
 });
 
+/**
+ * log in manager
+ */
 router.post('/signIn/manager', async (req, res) => {
   const { email, password } = req.body;
   const manager = await Manager.findOne({ email });
@@ -38,6 +44,9 @@ router.post('/signIn/manager', async (req, res) => {
 }
 );
 
+/**
+ * return a manager by Id
+ */
 router.get('/manager/:id', async (req, res) => {
   const manager = await Manager.findById(req.params.id);
   if (manager) {
@@ -47,6 +56,9 @@ router.get('/manager/:id', async (req, res) => {
   }
 });
 
+/**
+ * return all projects that a manager have
+ */
 router.get('/projects/:id', async (req, res) => {
   const projects = await Project.find({ managerId: req.params.id });
   res.send(projects);

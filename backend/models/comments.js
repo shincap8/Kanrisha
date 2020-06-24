@@ -1,3 +1,6 @@
+/**
+ * Creates schema comments in the database
+ */
 const { Schema, model } = require('mongoose');
 
 const commentSchema = new Schema({

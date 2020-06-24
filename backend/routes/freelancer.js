@@ -3,6 +3,9 @@ const router = express.Router();
 const Freelancer = require('../models/freelancer');
 const Task = require('../models/task');
 
+/**
+ * create a new freelancer
+ */
 router.post('/signUp/freelancer', async (req, res) => {
   const {
     name,
@@ -29,6 +32,9 @@ router.post('/signUp/freelancer', async (req, res) => {
   res.send(true);
 });
 
+/**
+ * log in a freelancer
+ */
 router.post('/signIn/freelancer', async (req, res) => {
   const { email, password } = req.body;
   const freelancer = await Freelancer.findOne({ email });
@@ -44,11 +50,17 @@ router.post('/signIn/freelancer', async (req, res) => {
   }
 });
 
+/**
+ * return all freelancers in database
+ */
 router.get('/all-freelancers', async (req, res) => {
   const freelancer = await Freelancer.find();
   res.send(freelancer);
 });
 
+/**
+ * return all freelancer with a taskId specified
+ */
 router.get('/all-freelancers/:taskId', async (req, res) => {
   const task = await Task.findById(req.params.taskId);
   if (task) {
@@ -63,6 +75,9 @@ router.get('/all-freelancers/:taskId', async (req, res) => {
   }
 });
 
+/**
+ * return a freelancer by Id
+ */
 router.get('/freelancer/:id', async (req, res) => {
   const freelancer = await Freelancer.findById(req.params.id);
   res.send(freelancer);

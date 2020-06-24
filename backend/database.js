@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+/**
+ * configure all about the database
+ */
 const MONGODB_URL = 'mongodb://localhost/kanrisha';
 
 mongoose.connect(MONGODB_URL, {

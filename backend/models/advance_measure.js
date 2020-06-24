@@ -1,3 +1,6 @@
+/**
+ * Creates the schema advance in the database
+ */
 const { Schema, model } = require('mongoose');
 
 const projectSchema = new Schema({

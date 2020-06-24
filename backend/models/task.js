@@ -1,3 +1,6 @@
+/**
+ * creates schema task in the database
+ */
 const { Schema, model } = require('mongoose');
 
 const taskSchema = new Schema({

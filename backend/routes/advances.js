@@ -5,6 +5,10 @@ const Advance = require('../models/advance_measure');
 const Freelancer = require('../models/freelancer');
 const Task = require('../models/task');
 
+/**
+ * :id to the project to return the advance
+ * respond the request with the advance of the project
+ */
 router.get('/project-advance/:id', async (req, res) => {
   const project = await Project.findById(req.params.id);
   let totaladvance = 0;
@@ -17,6 +21,10 @@ router.get('/project-advance/:id', async (req, res) => {
   res.send(String(totaladvance.toFixed(2)));
 });
 
+/**
+ * :id to the task to return the advance
+ * respond the request with the advance of the task
+ */
 router.get('/task-advance/:id', async (req, res) => {
   const task = await Task.findById(req.params.id);
   if (task.tasktype === 0 || task.tasktype === 1) {
@@ -51,6 +59,11 @@ router.get('/task-advance/:id', async (req, res) => {
   }
 });
 
+/**
+ * taskId: id of the task to measure the advance
+ * freelancerId: freelancer that make the task
+ * respond the request with the advance of the task by freelancer
+ */
 router.get('/freelancer/task-advance/:taskId/:freelancerId', async (req, res) => {
   const advance = await Advance.find();
   if (advance) {
@@ -64,6 +77,9 @@ router.get('/freelancer/task-advance/:taskId/:freelancerId', async (req, res) =>
   }
 });
 
+/**
+ * update the advance of a task
+ */
 router.put('/modifyadvance', async (req, res) => {
   const {
     freelancerId,

@@ -1,3 +1,6 @@
+/**
+ * creates schema project in the database
+ */
 const { Schema, model } = require('mongoose');
 
 const projectSchema = new Schema({

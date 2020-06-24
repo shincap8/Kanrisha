@@ -1,3 +1,6 @@
+/**
+ * creates schema freelancer in the database
+ */
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcryptjs');
 
