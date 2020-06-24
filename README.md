@@ -1,6 +1,41 @@
+![](readme_img/Logo.png)
+
 # Kanrisha
 
 Kanrisha is a freelance management platform. In which a manager can create projects and tasks, assign freelancers to tasks, put weight on tasks, see the progress of each task and project, and comment on tasks. The freelancer can see the projects and tasks that they participate in, they can put the progress of their tasks and comment on the tasks.  
+
+## Inspiration
+Two of our members have worked as independent, and they had to gather with their bosses to check their progress in the project assigned, losing time and money.  
+
+The other one used to work as freelancer and most of the time she didn't have a direct contact with her project manager, she would only receive requirements and do her job.  
+
+Covid-19 has made our lifestyle virtual, communication problems and internet connection are now in our daily business life. Therefore having meetings to check how freelancers are doing could be tiring mostly if an executive has thousands of freelancers.  
+
+Kanrisha has born from the necessity to manage a big amount of freelancers, without having lots of intermediaries o doing a lot of paperwork to know how they are doing in their tasks.  
+
+## Deploy
+To interact with the app you will need this credentials.  
+Manager- email: manager@gmail.com, password: 123456  
+Freelancer- email: freelancer@gmail.com, password: 123456  
+Go to the following path to interact with the application:
+```
+https://kanrisha.herokuapp.com/
+```
+## Features
+Kanrisha platform features:
+### Manage your projects
+You can create projects with their respective tasks and add freelancers to them.
+![](readme_img/Projects.png)
+
+### Check your projects and tasks progress
+You can watch how your projects and tasks advance; the app allows your freelancers to update their progress.
+![](readme_img/Advance.png)
+
+### Communicate with you freelancers
+You can communicate with your freelancers about a specific task to solve doubts or make some suggestions.
+![](readme_img/Comments.png)
+
+## Directories
 We have two directories to run the platform:  
 **Backend**: responsible for managing and manipulating the database and **Frontend**: that is the visual part of the platform, which takes data from the backend to display dynamic content.
 
