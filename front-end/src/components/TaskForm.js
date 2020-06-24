@@ -1,3 +1,6 @@
+/*
+The code below is a form to create tasks.
+*/
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';

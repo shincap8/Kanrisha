@@ -1,3 +1,11 @@
+/*
+The code below has 2 classes.
+@TaskListItem Receives as parameter the data of a task of a project of a manager.
+Returns the style of a project task from a manager in a list.
+@TasksList Receives project data from a manager's project
+Return the list of a manager's project tasks
+*/
+
 import React from 'react';
 import TaskAdvance from './TaskAdvance';
 
@@ -27,7 +35,7 @@ class TasksList extends React.Component {
     let classM = "col-md-4 mb-4"
     if (this.props.tasks.length === 0) {
       notask = <h5 className="text-muted">There are no task assigned</h5>
-    } 
+    }
     if (this.props.user === "manager") {
       classM = "col-md-6 mb-4";
     }

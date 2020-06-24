@@ -1,3 +1,8 @@
+/*
+The code below receives by parameter the data of a freelancer by Id.
+Returns the names of the projects of a freelancer.
+*/
+
 import React from 'react';
 import axios from 'axios';
 

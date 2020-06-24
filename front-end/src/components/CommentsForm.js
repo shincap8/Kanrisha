@@ -1,3 +1,7 @@
+/*
+The code below is a form to create comments.
+*/
+
 import React from 'react';
 import axios from 'axios';
 import history from '../history';

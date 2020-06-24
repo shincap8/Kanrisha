@@ -1,3 +1,7 @@
+/*
+The code below receives the information of the taskId as a parameter.
+Returns the percentage of progress of the task.
+*/
 import React from 'react';
 import axios from 'axios';
 import history from '../history';
@@ -48,7 +52,7 @@ class TaskAdvance extends React.Component {
       })
     }
   }
-    
+
   render () {
     console.log(this.props.type)
     let advance = "";

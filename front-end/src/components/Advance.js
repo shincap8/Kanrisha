@@ -1,3 +1,8 @@
+/*
+The code below will receive by parameter a freelancerId and a taskId.
+Returns a format according to the type of task
+*/
+
 import React from 'react';
 import history from '../history';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';

@@ -1,5 +1,11 @@
 import React from 'react';
-
+/*
+The code below has 2 classes.
+@FreelancerTasksListItem Receive as parameter information of a freelancer task.
+Returns the style of a freelancer task in a list.
+@FreelancerTasksList Receives information about the tasks of a freelancer as a parameter.
+Returns the list of tasks for a freelancer.
+*/
 
 export class FreelancerTasksListItem extends React.Component {
   render() {

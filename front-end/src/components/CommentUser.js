@@ -1,3 +1,8 @@
+/*
+The code below receives an ownerId.
+Returns the name of the user according to whether an Id is a freelancer or manager.
+*/
+
 import React from 'react';
 import axios from 'axios';
 

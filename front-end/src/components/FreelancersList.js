@@ -1,3 +1,10 @@
+/*
+The code below has 2 classes.
+@FreelancerListItem Receives information from a freelancer as a parameter.
+Returns the style of a freelancer in a list.
+@FreelancersList Receives information from freelancers as a parameter.
+Return the list of freelancers.
+*/
 import React from 'react';
 import Anonymous from '../img/anonymous.png';
 import TaskAdvance from './TaskAdvance';
