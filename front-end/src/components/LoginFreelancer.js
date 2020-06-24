@@ -1,3 +1,8 @@
+/*
+This code below is for the login of a freelancer it
+takes the email and password provided and post it 
+to the appi to see if the user can acces the webapp
+*/
 import React from 'react';
 import axios from 'axios';
 import history from '../history';

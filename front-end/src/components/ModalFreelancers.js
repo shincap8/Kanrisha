@@ -1,3 +1,7 @@
+/*
+This code below is for a modal, is like a popup to show
+the freelancers who can be added to the task by the manager
+*/
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 
@@ -23,7 +27,7 @@ class ModalFreelancer extends React.Component {
       this.setState({ show: true });
     }
   
-    handleClose (e) {
+    handleClose () {
       this.setState({ show: false });
       this.props.reset();
     }

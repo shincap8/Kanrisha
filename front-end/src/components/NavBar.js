@@ -1,3 +1,6 @@
+/*
+This code below is for navbar of the webapp
+*/
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../img/Logo.png';

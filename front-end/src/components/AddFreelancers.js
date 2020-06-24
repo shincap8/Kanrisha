@@ -1,3 +1,9 @@
+/*
+This code below is to add freelancers to the tasks,
+it receives the task id and loads all the freelancers
+so the manager can pick the freelancers wanted
+It calls the class ModalFreelancers
+*/
 import React from 'react';
 import axios from 'axios';
 import ModalFreelancers from './ModalFreelancers';
