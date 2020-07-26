@@ -157,12 +157,12 @@ export class TaskPage extends React.Component {
     let advance = "";
 
     if (user === "manager") {
-      freelancer_list = <div className="col-6">
+      freelancer_list = <div className="col-sm-6 col-12">
                           <h5 className="mb-4">Freelancers</h5>
                           <FreelancersList freelancers={this.state.freelancers} tasktype={this.state.tasktype}/>
                         </div>;
       if (active === true) {
-        add_freelancer = <div className="col-2">
+        add_freelancer = <div className="col-sm-2 col-12 mb-2">
                           <AddFreelancers taskId={this.state.taskId} projectId={this.state.projectId} refresh={this.getFreelancers}/>
                         </div>;
       }
@@ -188,7 +188,7 @@ export class TaskPage extends React.Component {
         <div className="row mt-4">
           {freelancer_list}
           {advance}
-          <div className="col-6">
+          <div className="col-sm-6 col-12">
             <h5 className="mb-4">Comments</h5>
             <Comments idowner={idowner}/>
           </div>

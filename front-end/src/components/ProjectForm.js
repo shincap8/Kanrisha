@@ -49,7 +49,7 @@ export class ProjectForm extends React.Component {
               value={this.props.project.deadline}
             />
           </div>
-          <button type="submit" className="btn btn-info btn-block mt-4" >
+          <button type="submit" className="btn btn-info btn-block mt-4 mb-4" >
             Save
           </button>
         </form>

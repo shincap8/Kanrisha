@@ -11,8 +11,8 @@ export class CommentsListItem extends React.Component {
       return (
           <div className="col-12 comment-item">
                   <div className="row md-12">
-                      <img className="card-img-top col-md-2 mt-2 ml-3" src={ Anonymous } alt="User" />
-                      <div className="col-md-6 mt-4">
+                      <img className="card-img-top col-4 col-sm-2 mt-2 ml-3" src={ Anonymous } alt="User" />
+                      <div className="col-6 mt-4">
                         <CommentUser userId={this.props.comment.idowner} type={this.props.comment.profiletype}/>
                       </div>
                   </div>

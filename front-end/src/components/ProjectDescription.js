@@ -77,28 +77,28 @@ class ProjectDescription extends React.Component {
     }
     return (
         <div className={cls}>
-          <div className="col-10">
+          <div className="col-sm-10 col-12">
             <div className="row">
-            <div className="col-4">
+            <div className="col-6 col-sm-4">
               <h3>{this.props.project.name}</h3>
             </div>
-            <div className="col-4">
+            <div className="col-sm-4 col-2">
               {advance}
             </div>
-            <div className="col-4">
+            <div className="col-sm-4 col-2">
               {changeStsbtn}
             </div>
             </div>
             <div className="row mt-4">
-              <div className="col-6">
+              <div className="col-sm-6 col-12">
                 <p className="text-wrap"><strong>Deadline: </strong>{(typeof (this.props.project.deadline) === 'object') ? this.props.project.deadline.toDateString() : this.props.project.deadline}</p>
               </div>
-              <div className="col-6">
+            <div className="col-sm-6 col-12">
                 <p className="text-wrap"><strong>Description: </strong> {this.props.project.description}</p>
               </div>
             </div>
           </div>
-          <div className="col-2">
+          <div className="col-12 col-sm-2 mb-2">
             {NewTaskbtn}
           </div>
         </div>

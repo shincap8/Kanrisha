@@ -56,7 +56,9 @@ export class TaskForm extends React.Component {
               value="0"
               checked={this.props.task.tasktype === "0"}
               onChange={this.props.onChangeOption} />
+              <span className="ml-2">
               Boolean
+              </span>
             </label>
 
 
@@ -66,7 +68,9 @@ export class TaskForm extends React.Component {
               value="1"
               checked={this.props.task.tasktype === "1"}
               onChange={this.props.onChangeOption} />
+              <span className="ml-2">
               Percentage
+              </span>
             </label>
 
             <label className="radio-inline col-md-4">
@@ -74,8 +78,9 @@ export class TaskForm extends React.Component {
               name="tasktype"
               value="2"
               checked={this.props.task.tasktype === "2"}
-              onChange={this.props.onChangeOption} />
+              onChange={this.props.onChangeOption} /><span className="ml-2">
               Amount
+              </span>
             </label>
 
           </div>

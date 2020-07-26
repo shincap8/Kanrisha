@@ -99,11 +99,11 @@ export class ProjectPage extends React.Component {
     let classN = "col-12";
 
     if (user === "manager") {
-      freelancer_list = <div className="col-6">
+      freelancer_list = <div className="col-sm-6 col-12">
                           <h5 className="mb-4">Freelancers</h5>
                           <FreelancersList freelancers={this.state.freelancers} />
                         </div>
-      classN = "col-6";
+      classN = "col-sm-6 col-12";
     }
 
     return (

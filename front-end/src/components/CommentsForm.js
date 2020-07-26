@@ -57,7 +57,7 @@ export class CommentsForm extends React.Component {
 
     render () {
         return (
-            <div className="col-md-12 mt-3">
+            <div className="col-12 mt-3">
                 <form onSubmit={this.onSubmit}>
 
                     <div className="form-group">

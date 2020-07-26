@@ -20,10 +20,10 @@ class FreelancerListItem extends React.Component {
     return (
       <div>
         <div className="row">
-          <div className="col-md-4 img-free">
+          <div className="col-4 img-free">
             <img className="card-img mt-2" src={Anonymous} alt="User" />
           </div>
-          <div className="col-md-7 mt-2">
+          <div className="col-7 mt-2">
             <h4 className="card-title">{this.props.freelancer.name}</h4>
             <p className="card-text">{this.props.freelancer.profession}</p>
           </div>
@@ -53,7 +53,7 @@ class FreelancersList extends React.Component {
         <div className="card-deck">
             {this.props.freelancers.map(freelancer => {
               return (
-                <div className="col-6" key={freelancer._id}>
+                <div className="col-sm-6 col-12" key={freelancer._id}>
                   <div className="card mb-4">
                     <FreelancerListItem freelancer={ freelancer } tasktype={this.props.tasktype}/>
                   </div>

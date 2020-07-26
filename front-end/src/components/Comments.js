@@ -39,7 +39,7 @@ export class Comments extends React.Component {
         return (
           <div className="CommentsList">
             <div className="row">
-              <div className="col-11 chat">
+              <div className="col-10 col-sm-11 chat">
                 {this.state.comments.map(comment => {
                   return (
                     <CommentsListItem comment={comment} idowner={this.props.idowner}/>

@@ -20,12 +20,12 @@ export class NavBar extends React.Component {
         <Link to="/">
           <img className="navbar-brand d-inline-block align-top" width ="330" height="112"src={logo} alt="Kanrisha Logo" />
         </Link>
-        <h3 className="text-left">Personnel Manager</h3>
-        <ul className="nav justify-content-end">
+        <h3 className="text-left mt-sm-0 mt-5 mx-auto">Personnel Manager</h3>
+        <ul className="nav justify-sm-content-end flex-column flex-sm-row justify-content-end mx-auto">
           <Link to={{pathname: "/Home", state: history.location.state }}>
             <li className="nav-link" value="Active Projects" data-toggle="dropdown">Active Projects</li>
           </Link>
-          <Link to={{ pathname: "/AllProjects", state: history.location.state}}>
+          <Link to={{pathname: "/AllProjects", state: history.location.state}}>
             <li className="nav-item nav-link" value="All Projects" data-toggle="dropdown">All Projects</li>
           </Link>
           {newProject}
